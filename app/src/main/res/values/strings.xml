@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">JOM</string>
+    <string name="landing_alt">Oil bottle with a coconut</string>
+    <string name="logo_alt">JOM Logo</string>
+    <string name="cash">&#xf17b;</string>
 </resources>
