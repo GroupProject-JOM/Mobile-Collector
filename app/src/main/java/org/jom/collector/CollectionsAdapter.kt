@@ -14,13 +14,6 @@ data class CollectionItem(
     val amount: Int
 )
 
-val collectionItems = listOf(
-    CollectionItem("Item 1", "10:00 AM", 500),
-    CollectionItem("Item 2", "11:30 AM", 750),
-    CollectionItem("Item 3", "01:45 PM", 1000),
-    // Add more items as needed
-)
-
 
 class CollectionsAdapter(private val collectionItems: List<CollectionItem>) :
     RecyclerView.Adapter<CollectionsAdapter.CollectionsViewHolder>() {
@@ -29,8 +22,7 @@ class CollectionsAdapter(private val collectionItems: List<CollectionItem>) :
         val collectionName: TextView = itemView.findViewById(R.id.tvCollectionName)
         val collectionTime: TextView = itemView.findViewById(R.id.tvCollectionTime)
         val collectionAmount: TextView = itemView.findViewById(R.id.tvCollectionAmount)
-        val selectButton: Button = itemView.findViewById(R.id.btnSelect)
-//        val cashIcon: ImageView = itemView.findViewById(R.id.ic_cash)
+//        val selectButton: Button = itemView.findViewById(R.id.btnSelect)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionsViewHolder {
@@ -50,9 +42,9 @@ class CollectionsAdapter(private val collectionItems: List<CollectionItem>) :
         // depending on how you handle your image resources.
         // holder.cashIcon.setImageResource(R.drawable.ic_cash)
 
-        holder.selectButton.setOnClickListener {
-            // Handle button click here if needed
-        }
+//        holder.selectButton.setOnClickListener {
+//            // Handle button click here if needed
+//        }
     }
 
     override fun getItemCount(): Int {
