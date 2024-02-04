@@ -1,4 +1,4 @@
-package org.jom.collector
+package org.jom.collector.collections
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,15 +7,17 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.jom.collector.DashboardActivity
+import org.jom.collector.R
 
-class VerifyAmountActivity : AppCompatActivity() {
+class ViewCollectionActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var backButton: ImageView
-    private lateinit var optional: Button
+    private lateinit var complete: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_verify_amount)
+        setContentView(R.layout.activity_view_collection)
 
         //back
         backButton = findViewById(R.id.back_button)
@@ -25,10 +27,10 @@ class VerifyAmountActivity : AppCompatActivity() {
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
 
-        // optional verification
-        optional = findViewById(R.id.optional)
-        optional.setOnClickListener {
-            val intent = Intent(this, OptionalVerificationActivity::class.java)
+        // complete collection
+        complete = findViewById(R.id.complete)
+        complete.setOnClickListener {
+            val intent = Intent(this, CompleteCollectionActivity::class.java)
             startActivity(intent)
         }
 

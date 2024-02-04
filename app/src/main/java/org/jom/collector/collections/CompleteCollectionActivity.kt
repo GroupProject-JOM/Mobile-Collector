@@ -1,23 +1,23 @@
-package org.jom.collector
+package org.jom.collector.collections
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.jom.collector.DashboardActivity
+import org.jom.collector.R
 
-class ViewCollectionActivity : AppCompatActivity() {
+class CompleteCollectionActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var backButton: ImageView
     private lateinit var complete: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_collection)
+        setContentView(R.layout.activity_complete_collection)
 
         //back
         backButton = findViewById(R.id.back_button)
@@ -30,10 +30,9 @@ class ViewCollectionActivity : AppCompatActivity() {
         // complete collection
         complete = findViewById(R.id.complete)
         complete.setOnClickListener {
-            val intent = Intent(this, CompleteCollectionActivity::class.java)
+            val intent = Intent(this, VerifyAmountActivity::class.java)
             startActivity(intent)
         }
-
 
         // bottom nav handler
         bottomNavigationView = findViewById(R.id.bottom_nav)
