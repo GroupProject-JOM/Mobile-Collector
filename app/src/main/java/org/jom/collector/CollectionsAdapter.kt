@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import org.jom.collector.collections.ViewCollectionActivity
 
 data class CollectionItem(
     val location: String,
