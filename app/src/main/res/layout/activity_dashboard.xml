@@ -97,36 +97,36 @@
             app:layout_constraintTop_toBottomOf="@+id/name">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/widget01_image"
                 android:layout_width="37dp"
                 android:layout_height="31dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/icon_home"
+                app:srcCompat="@drawable/icon_cash"
                 app:tint="@color/lightBodyColor" />
 
             <TextView
-                android:id="@+id/rate"
+                android:id="@+id/widget01_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="60 LKR"
                 android:textColor="@color/lightBodyColor"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/imageView4"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                app:layout_constraintStart_toStartOf="@+id/widget01_image"
+                app:layout_constraintTop_toBottomOf="@+id/widget01_image" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/widget01_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Coconut Rate"
                 android:textColor="@color/lightBodyColor"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/rate"
-                app:layout_constraintTop_toBottomOf="@+id/rate" />
+                app:layout_constraintStart_toStartOf="@+id/widget01_value"
+                app:layout_constraintTop_toBottomOf="@+id/widget01_value" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -141,36 +141,36 @@
             app:layout_constraintTop_toBottomOf="@+id/name">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/widget02_image"
                 android:layout_width="37dp"
                 android:layout_height="31dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/icon_user"
+                app:srcCompat="@drawable/icon_truck"
                 app:tint="@color/lightBodyColor" />
 
             <TextView
-                android:id="@+id/collections"
+                android:id="@+id/widget02_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12"
                 android:textColor="@color/lightBodyColor"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/imageView5"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+                app:layout_constraintStart_toStartOf="@+id/widget02_image"
+                app:layout_constraintTop_toBottomOf="@+id/widget02_image" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/widget02_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Collections"
                 android:textColor="@color/lightBodyColor"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/collections"
-                app:layout_constraintTop_toBottomOf="@+id/collections" />
+                app:layout_constraintStart_toStartOf="@+id/widget02_value"
+                app:layout_constraintTop_toBottomOf="@+id/widget02_value" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

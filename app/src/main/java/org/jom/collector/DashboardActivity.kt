@@ -90,14 +90,15 @@ class DashboardActivity : AppCompatActivity() {
 
         // bottom nav handler
         bottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.nav_home
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
                     item.setIcon(R.drawable.icon_home)
                     true
                 }
-                R.id.nav_past -> {
-                    item.setIcon(R.drawable.icon_past)
+                R.id.nav_completed -> {
+                    item.setIcon(R.drawable.icon_completed)
                     true
                 }
                 R.id.nav_assigned -> {
