@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CollectionCompletedActivity : AppCompatActivity() {
@@ -19,6 +20,10 @@ class CollectionCompletedActivity : AppCompatActivity() {
         //back
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
+
+        // nav and status bar color
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
 
         // optional verification
         dashboard = findViewById(R.id.dashboard)

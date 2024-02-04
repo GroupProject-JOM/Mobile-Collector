@@ -102,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@+id/collection_id_text" />
 
     <TextView
-        android:id="@+id/location"
+        android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ahangama"
@@ -129,7 +129,7 @@
         android:text="1000"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/location"
+        app:layout_constraintStart_toStartOf="@+id/city"
         app:layout_constraintTop_toTopOf="@+id/coconut_count_text" />
 
     <TextView

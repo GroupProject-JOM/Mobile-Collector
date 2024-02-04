@@ -14,28 +14,28 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class DashboardActivity : AppCompatActivity() {
 
     val todayCollectionItems = listOf(
-        CollectionItem("Item 1", "10:00 AM", 500),
-        CollectionItem("Item 2", "11:30 AM", 750),
-        CollectionItem("Item 3", "01:45 PM", 1000),
-        CollectionItem("Item 4", "11:30 AM", 750),
-        CollectionItem("Item 5", "01:45 PM", 1000),
-        CollectionItem("Item 6", "11:30 AM", 750),
-        CollectionItem("Item 7", "01:45 PM", 1000),
-        CollectionItem("Item 8", "11:30 AM", 750),
-        CollectionItem("Item 9", "01:45 PM", 1000),
-        CollectionItem("Item 10", "01:45 PM", 1000),
+        CollectionItem("Maharagama", "10:00 AM", 500, "Cash"),
+        CollectionItem("Piliyandala", "11:30 AM", 750, "Cash"),
+        CollectionItem("Pannipitiya", "01:45 PM", 1000, "Bank"),
+        CollectionItem("Kirulapone", "11:30 AM", 750, "Cash"),
+        CollectionItem("Kohuwala", "01:45 PM", 1000, "Bank"),
+        CollectionItem("Nugegoda", "11:30 AM", 750, "Bank"),
+        CollectionItem("Udahamulla", "01:45 PM", 1000, "Bank"),
+        CollectionItem("Wijerama", "11:30 AM", 750, "Cash"),
+        CollectionItem("Navinna", "01:45 PM", 1000, "Bank"),
+        CollectionItem("Delkanda", "01:45 PM", 1000, "Bank"),
     )
     val upcomingCollectionItems = listOf(
-        CollectionItem("Upcoming Item 1", "10:00 AM", 500),
-        CollectionItem("Upcoming Item 2", "11:30 AM", 750),
-        CollectionItem("Upcoming Item 3", "01:45 PM", 1000),
-        CollectionItem("Upcoming Item 4", "11:30 AM", 750),
-        CollectionItem("Upcoming Item 5", "01:45 PM", 1000),
-        CollectionItem("Upcoming Item 6", "11:30 AM", 750),
-        CollectionItem("Upcoming Item 7", "01:45 PM", 1000),
-        CollectionItem("Upcoming Item 8", "11:30 AM", 750),
-        CollectionItem("Upcoming Item 9", "01:45 PM", 1000),
-        CollectionItem("Upcoming Item 10", "01:45 PM", 1000),
+        CollectionItem("Maharagama", "2024-02-05 10:00 AM", 500, "Cash"),
+        CollectionItem("Piliyandala", "2024-02-05 11:30 AM", 750, "Cash"),
+        CollectionItem("Pannipitiya", "2024-02-05 01:45 PM", 1000, "Bank"),
+        CollectionItem("Kirulapone", "2024-02-05 11:30 AM", 750, "Cash"),
+        CollectionItem("Kohuwala", "2024-02-06 01:45 PM", 1000, "Bank"),
+        CollectionItem("Nugegoda", "2024-02-06 11:30 AM", 750, "Bank"),
+        CollectionItem("Udahamulla", "2024-02-06 01:45 PM", 1000, "Bank"),
+        CollectionItem("Wijerama", "2024-02-06 11:30 AM", 750, "Cash"),
+        CollectionItem("Navinna", "2024-02-06 01:45 PM", 1000, "Bank"),
+        CollectionItem("Delkanda", "2024-02-06 01:45 PM", 1000, "Bank"),
     )
 
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -97,14 +97,17 @@ class DashboardActivity : AppCompatActivity() {
                     item.setIcon(R.drawable.icon_home)
                     true
                 }
+
                 R.id.nav_completed -> {
                     item.setIcon(R.drawable.icon_completed)
                     true
                 }
+
                 R.id.nav_assigned -> {
                     item.setIcon(R.drawable.icon_assigned)
                     true
                 }
+
                 R.id.nav_user -> {
                     item.setIcon(R.drawable.icon_user)
                     true
