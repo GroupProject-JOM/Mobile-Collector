@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CompleteCollectionActivity">
+    tools:context=".CollectionCompletedActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -61,7 +61,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/roboto"
-        android:text="Collection Details"
+        android:text="Collection Completed"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -133,6 +133,27 @@
         app:layout_constraintTop_toTopOf="@+id/coconut_count_text" />
 
     <TextView
+        android:id="@+id/actual_count_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Actual Count"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/coconut_count_text"
+        app:layout_constraintTop_toBottomOf="@+id/coconut_count_text" />
+
+    <TextView
+        android:id="@+id/actual_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="900"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/coconut_count"
+        app:layout_constraintTop_toTopOf="@+id/actual_count_text" />
+
+    <TextView
         android:id="@+id/owner_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -140,8 +161,8 @@
         android:text="Owner Name"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/coconut_count_text"
-        app:layout_constraintTop_toBottomOf="@+id/coconut_count_text" />
+        app:layout_constraintStart_toStartOf="@+id/actual_count_text"
+        app:layout_constraintTop_toBottomOf="@+id/actual_count_text" />
 
     <TextView
         android:id="@+id/owner_name"
@@ -198,36 +219,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
-        android:text="Actual Coconut Amount"
+        android:text="Collection Marked as Complete"
+        android:textColor="#4E9A02"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/owner_mobile_text"
         app:layout_constraintTop_toBottomOf="@+id/owner_mobile_text" />
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal"
-        android:layout_width="215dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="291dp"
-        android:layout_height="wrap_content"
-        android:text="Upon Submission, Supplier will verify the coconut amount using his application. "
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumberDecimal"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
-
     <Button
-        android:id="@+id/complete"
-        android:layout_width="275dp"
+        android:id="@+id/dashboard"
+        android:layout_width="204dp"
         android:layout_height="50dp"
         android:layout_marginBottom="120dp"
-        android:text="Complete Collection"
+        android:text="Go to Home"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,23 +7,23 @@ import android.widget.Button
 import android.widget.ImageView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class CompleteCollectionActivity : AppCompatActivity() {
+class OptionalVerificationActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var backButton: ImageView
-    private lateinit var complete: Button
+    private lateinit var verify: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_complete_collection)
+        setContentView(R.layout.activity_optional_verification)
 
         //back
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
 
         // complete collection
-        complete = findViewById(R.id.complete)
-        complete.setOnClickListener {
-            val intent = Intent(this, VerifyAmountActivity::class.java)
+        verify = findViewById(R.id.verify)
+        verify.setOnClickListener {
+            val intent = Intent(this, CollectionCompletedActivity::class.java)
             startActivity(intent)
         }
 

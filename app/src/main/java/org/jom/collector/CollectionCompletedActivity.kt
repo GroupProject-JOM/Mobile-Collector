@@ -7,25 +7,26 @@ import android.widget.Button
 import android.widget.ImageView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class CompleteCollectionActivity : AppCompatActivity() {
+class CollectionCompletedActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var backButton: ImageView
-    private lateinit var complete: Button
+    private lateinit var dashboard: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_complete_collection)
+        setContentView(R.layout.activity_collection_completed)
 
         //back
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
 
-        // complete collection
-        complete = findViewById(R.id.complete)
-        complete.setOnClickListener {
-            val intent = Intent(this, VerifyAmountActivity::class.java)
+        // optional verification
+        dashboard = findViewById(R.id.dashboard)
+        dashboard.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
+
 
         // bottom nav handler
         bottomNavigationView = findViewById(R.id.bottom_nav)

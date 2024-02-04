@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="20sp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/ic_cash"
+            android:src="@drawable/icon_cash"
             app:layout_constraintEnd_toStartOf="@+id/tvCollectionAmount"
             app:layout_constraintTop_toTopOf="@+id/tvCollectionName"
             app:tint="@color/lightSidebarColor" />
@@ -68,7 +68,7 @@
             android:id="@+id/ic_cash1"
             android:layout_width="wrap_content"
             android:layout_height="20sp"
-            android:src="@drawable/ic_cash"
+            android:src="@drawable/icon_box"
             app:layout_constraintEnd_toStartOf="@+id/tvCollectionAmount1"
             app:layout_constraintTop_toTopOf="@+id/ic_cash"
             app:tint="@color/lightSidebarColor" />
