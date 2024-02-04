@@ -20,7 +20,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="392dp"
+        android:layout_width="match_parent"
         android:layout_height="57dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,19 +29,209 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewToday"
-        android:layout_width="392dp"
-        android:layout_height="589dp"
+        android:layout_width="match_parent"
+        android:layout_height="525dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/midNavBottomShadow" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewUpcoming"
-        android:layout_width="392dp"
-        android:layout_height="589dp"
+        android:layout_width="match_parent"
+        android:layout_height="525dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/midNavBottomShadow" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/greeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:text="Good Morning"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/lightSidebarColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Collector"
+            android:textColor="@color/lightPrimaryColor"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/greeting"
+            app:layout_constraintTop_toBottomOf="@+id/greeting" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/widget01"
+            android:layout_width="170dp"
+            android:layout_height="87dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/widget_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name">
+
+            <ImageView
+                android:id="@+id/widget01_image"
+                android:layout_width="37dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icon_cash"
+                app:tint="@color/lightBodyColor" />
+
+            <TextView
+                android:id="@+id/widget01_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60 LKR"
+                android:textColor="@color/lightBodyColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/widget01_image"
+                app:layout_constraintTop_toBottomOf="@+id/widget01_image" />
+
+            <TextView
+                android:id="@+id/widget01_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coconut Rate"
+                android:textColor="@color/lightBodyColor"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/widget01_value"
+                app:layout_constraintTop_toBottomOf="@+id/widget01_value" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/widget02"
+            android:layout_width="170dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/widget_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name">
+
+            <ImageView
+                android:id="@+id/widget02_image"
+                android:layout_width="37dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icon_truck"
+                app:tint="@color/lightBodyColor" />
+
+            <TextView
+                android:id="@+id/widget02_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textColor="@color/lightBodyColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/widget02_image"
+                app:layout_constraintTop_toBottomOf="@+id/widget02_image" />
+
+            <TextView
+                android:id="@+id/widget02_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Collections"
+                android:textColor="@color/lightBodyColor"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/widget02_value"
+                app:layout_constraintTop_toBottomOf="@+id/widget02_value" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/midNavTopShadow">
+
+        <Button
+            android:id="@+id/today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text=" Today "
+            android:textColor="@color/lightSidebarColor"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+        <View
+            android:id="@+id/midNavVerticalShadow"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/right_shadow"
+            android:layout_above="@+id/linearLayout" />
+
+        <Button
+            android:id="@+id/upcoming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="Upcoming"
+            android:textColor="@color/darkPrimaryColorLight"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/midNavBottomShadow"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@+id/linearLayout"
+        android:background="@drawable/bottom_shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+    <View
+        android:id="@+id/midNavTopShadow"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@+id/constraintLayout"
+        android:background="@drawable/shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

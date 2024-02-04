@@ -3,70 +3,88 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="80dp"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="20dp"
-    android:layout_marginBottom="40dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="80dp">
 
         <TextView
-            android:id="@+id/tvCollectionTime"
-            android:layout_width="77dp"
-            android:layout_height="23dp"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="10.30 AM"
             android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/tvCollectionName"
-            app:layout_constraintTop_toBottomOf="@+id/tvCollectionName" />
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/city"
+            app:layout_constraintTop_toBottomOf="@+id/city" />
 
         <ImageView
-            android:id="@+id/ic_cash"
-            android:layout_width="27dp"
-            android:layout_height="16dp"
-            android:layout_marginBottom="12dp"
-            android:src="@drawable/ic_cash"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvCollectionTime" />
+            android:id="@+id/icon_cash"
+            android:layout_width="20dp"
+            android:layout_height="20sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/icon_cash"
+            app:layout_constraintEnd_toStartOf="@+id/payment_method"
+            app:layout_constraintTop_toTopOf="@+id/city"
+            app:tint="@color/lightSidebarColor" />
 
         <TextView
-            android:id="@+id/tvCollectionName"
-            android:layout_width="170dp"
-            android:layout_height="25dp"
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:text="Ahangama"
             android:textColor="#000000"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvCollectionAmount"
-            android:layout_width="53dp"
-            android:layout_height="16dp"
+            android:id="@+id/payment_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:text="Cash"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/icon_box"
+            app:layout_constraintTop_toTopOf="@+id/city" />
+
+        <ImageView
+            android:id="@+id/icon_box"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/icon_box"
+            app:layout_constraintEnd_toStartOf="@+id/coconut_amount"
+            app:layout_constraintTop_toTopOf="@+id/icon_cash"
+            app:tint="@color/lightSidebarColor" />
+
+        <TextView
+            android:id="@+id/coconut_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
             android:text="1000"
             android:textColor="#000000"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/ic_cash"
-            app:layout_constraintStart_toEndOf="@+id/ic_cash" />
-
-        <Button
-            android:id="@+id/btnSelect"
-            android:layout_width="97dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="12dp"
-            android:text="Select"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/payment_method" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
