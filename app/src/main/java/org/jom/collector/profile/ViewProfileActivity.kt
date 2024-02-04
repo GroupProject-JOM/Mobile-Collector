@@ -1,4 +1,4 @@
-package org.jom.collector.collections
+package org.jom.collector.profile
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,16 +9,16 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.jom.collector.DashboardActivity
 import org.jom.collector.R
-import org.jom.collector.profile.ViewProfileActivity
+import org.jom.collector.collections.VerifyAmountActivity
 
-class VerifyAmountActivity : AppCompatActivity() {
+class ViewProfileActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var backButton: ImageView
-    private lateinit var optional: Button
+    private lateinit var edit: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_verify_amount)
+        setContentView(R.layout.activity_view_profile)
 
         //back
         backButton = findViewById(R.id.back_button)
@@ -28,17 +28,16 @@ class VerifyAmountActivity : AppCompatActivity() {
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
 
-        // optional verification
-        optional = findViewById(R.id.optional)
-        optional.setOnClickListener {
-            val intent = Intent(this, OptionalVerificationActivity::class.java)
+        // complete collection
+        edit = findViewById(R.id.edit)
+        edit.setOnClickListener {
+            val intent = Intent(this, EditProfileActivity::class.java)
             startActivity(intent)
         }
 
-
         // bottom nav handler
         bottomNavigationView = findViewById(R.id.bottom_nav)
-        bottomNavigationView.selectedItemId = R.id.nav_assigned
+        bottomNavigationView.selectedItemId = R.id.nav_user
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
@@ -60,9 +59,6 @@ class VerifyAmountActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_user -> {
-                    val intent = Intent(this, ViewProfileActivity::class.java)
-                    startActivity(intent)
-
                     item.setIcon(R.drawable.icon_user)
                     true
                 }

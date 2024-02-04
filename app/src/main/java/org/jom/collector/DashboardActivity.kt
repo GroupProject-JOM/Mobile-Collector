@@ -1,5 +1,6 @@
 package org.jom.collector
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.jom.collector.profile.ViewProfileActivity
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -109,6 +111,9 @@ class DashboardActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_user -> {
+                    val intent = Intent(this, ViewProfileActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_user)
                     true
                 }
