@@ -28,7 +28,7 @@ class OptionalVerificationActivity : AppCompatActivity() {
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
 
-        // complete collection
+        // verify amount
         verify = findViewById(R.id.verify)
         verify.setOnClickListener {
             val intent = Intent(this, CollectionCompletedActivity::class.java)

@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.jom.collector.DashboardActivity
 import org.jom.collector.R
-import org.jom.collector.collections.VerifyAmountActivity
 
 class ViewProfileActivity : AppCompatActivity() {
 
@@ -28,7 +27,7 @@ class ViewProfileActivity : AppCompatActivity() {
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
 
-        // complete collection
+        // edit profile
         edit = findViewById(R.id.edit)
         edit.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)

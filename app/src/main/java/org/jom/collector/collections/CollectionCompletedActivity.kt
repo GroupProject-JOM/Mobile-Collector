@@ -28,7 +28,7 @@ class CollectionCompletedActivity : AppCompatActivity() {
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
 
-        // optional verification
+        // back to dashboard
         dashboard = findViewById(R.id.dashboard)
         dashboard.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
