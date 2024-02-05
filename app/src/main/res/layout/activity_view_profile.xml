@@ -54,19 +54,270 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-    <TextView
-        android:id="@+id/collection_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/roboto"
-        android:text="Your Profile"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topBarShadow" />
+        app:layout_constraintTop_toBottomOf="@+id/topBarShadow">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/profile_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="48dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Your Profile"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/first_name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="First Name"
+                    app:layout_constraintStart_toStartOf="@+id/profile_details"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_details" />
+
+                <TextView
+                    android:id="@+id/first_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Buddhika"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/first_name_label"
+                    app:layout_constraintTop_toBottomOf="@+id/first_name_label" />
+
+                <TextView
+                    android:id="@+id/last_name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:text="Last Name"
+                    app:layout_constraintStart_toEndOf="@+id/first_name_label"
+                    app:layout_constraintTop_toTopOf="@+id/first_name_label" />
+
+                <TextView
+                    android:id="@+id/last_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Senanayake"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/last_name_label"
+                    app:layout_constraintTop_toBottomOf="@+id/last_name_label" />
+
+                <TextView
+                    android:id="@+id/email_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="Email Address"
+                    app:layout_constraintStart_toStartOf="@+id/first_name"
+                    app:layout_constraintTop_toBottomOf="@+id/first_name" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="bnsbuddhika@gmail.com"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/email_label"
+                    app:layout_constraintTop_toBottomOf="@+id/email_label" />
+
+                <TextView
+                    android:id="@+id/contact_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Contact Number"
+                    app:layout_constraintStart_toStartOf="@+id/email"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+
+                <TextView
+                    android:id="@+id/contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="0713270510"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/contact_label"
+                    app:layout_constraintTop_toBottomOf="@+id/contact_label" />
+
+                <TextView
+                    android:id="@+id/nic_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="NIC"
+                    app:layout_constraintStart_toStartOf="@+id/contact"
+                    app:layout_constraintTop_toBottomOf="@+id/contact" />
+
+                <TextView
+                    android:id="@+id/nic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="200121503100"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/nic_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nic_label" />
+
+                <TextView
+                    android:id="@+id/dob_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Date of Birth"
+                    app:layout_constraintStart_toStartOf="@+id/nic"
+                    app:layout_constraintTop_toBottomOf="@+id/nic" />
+
+                <TextView
+                    android:id="@+id/dob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="2001-08-02"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/dob_label"
+                    app:layout_constraintTop_toBottomOf="@+id/dob_label" />
+
+                <TextView
+                    android:id="@+id/gender_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Gender"
+                    app:layout_constraintStart_toStartOf="@+id/dob"
+                    app:layout_constraintTop_toBottomOf="@+id/dob" />
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Male"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/gender_label"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_label" />
+
+                <TextView
+                    android:id="@+id/address_1_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Address Line 1"
+                    app:layout_constraintStart_toStartOf="@+id/gender"
+                    app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+                <TextView
+                    android:id="@+id/address_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="48/16, Wijerama Road"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/address_1_label"
+                    app:layout_constraintTop_toBottomOf="@+id/address_1_label" />
+
+                <TextView
+                    android:id="@+id/address_2_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Street"
+                    app:layout_constraintStart_toStartOf="@+id/address_1"
+                    app:layout_constraintTop_toBottomOf="@+id/address_1" />
+
+                <TextView
+                    android:id="@+id/address_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Udahamulla"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/address_2_label"
+                    app:layout_constraintTop_toBottomOf="@+id/address_2_label" />
+
+                <TextView
+                    android:id="@+id/address_3_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="City"
+                    app:layout_constraintStart_toStartOf="@+id/last_name"
+                    app:layout_constraintTop_toTopOf="@+id/address_2_label" />
+
+                <TextView
+                    android:id="@+id/address_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Nugegoda"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/address_3_label"
+                    app:layout_constraintTop_toBottomOf="@+id/address_3_label" />
+
+                <TextView
+                    android:id="@+id/role_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="User Role"
+                    app:layout_constraintStart_toStartOf="@+id/address_2"
+                    app:layout_constraintTop_toBottomOf="@+id/address_2" />
+
+                <TextView
+                    android:id="@+id/role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Collector"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/role_label"
+                    app:layout_constraintTop_toBottomOf="@+id/role_label" />
+
+                <Button
+                    android:id="@+id/edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="40dp"
+                    android:text="Edit Profile"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/role"
+                    app:layout_constraintTop_toBottomOf="@+id/role" />
+
+                <Button
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="40dp"
+                    android:text="Log out"
+                    app:layout_constraintStart_toEndOf="@+id/edit"
+                    app:layout_constraintTop_toTopOf="@+id/edit" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
     <View
         android:id="@+id/bottomNavContainer"
@@ -86,232 +337,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/nav_menu" />
-
-    <TextView
-        android:id="@+id/first_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="First Name"
-        app:layout_constraintStart_toStartOf="@+id/collection_details"
-        app:layout_constraintTop_toBottomOf="@+id/collection_details" />
-
-    <TextView
-        android:id="@+id/first_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Buddhika"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/first_name_label"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_label" />
-
-    <TextView
-        android:id="@+id/last_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:text="Last Name"
-        app:layout_constraintStart_toEndOf="@+id/first_name_label"
-        app:layout_constraintTop_toTopOf="@+id/first_name_label" />
-
-    <TextView
-        android:id="@+id/last_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Senanayake"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/last_name_label"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_label" />
-
-    <TextView
-        android:id="@+id/email_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Email Address"
-        app:layout_constraintStart_toStartOf="@+id/first_name"
-        app:layout_constraintTop_toBottomOf="@+id/first_name" />
-
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="bnsbuddhika@gmail.com"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/email_label"
-        app:layout_constraintTop_toBottomOf="@+id/email_label" />
-
-    <TextView
-        android:id="@+id/contact_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Contact Number"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
-
-    <TextView
-        android:id="@+id/contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="0713270510"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/contact_label"
-        app:layout_constraintTop_toBottomOf="@+id/contact_label" />
-
-    <TextView
-        android:id="@+id/nic_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="NIC"
-        app:layout_constraintStart_toStartOf="@+id/contact"
-        app:layout_constraintTop_toBottomOf="@+id/contact" />
-
-    <TextView
-        android:id="@+id/nic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="200121503100"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/nic_label"
-        app:layout_constraintTop_toBottomOf="@+id/nic_label" />
-
-    <TextView
-        android:id="@+id/dob_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Date of Birth"
-        app:layout_constraintStart_toStartOf="@+id/nic"
-        app:layout_constraintTop_toBottomOf="@+id/nic" />
-
-    <TextView
-        android:id="@+id/dob"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="2001-08-02"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/dob_label"
-        app:layout_constraintTop_toBottomOf="@+id/dob_label" />
-
-    <TextView
-        android:id="@+id/gender_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Gender"
-        app:layout_constraintStart_toStartOf="@+id/dob"
-        app:layout_constraintTop_toBottomOf="@+id/dob" />
-
-    <TextView
-        android:id="@+id/gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Male"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/gender_label"
-        app:layout_constraintTop_toBottomOf="@+id/gender_label" />
-
-    <TextView
-        android:id="@+id/address_1_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Address Line 1"
-        app:layout_constraintStart_toStartOf="@+id/gender"
-        app:layout_constraintTop_toBottomOf="@+id/gender" />
-
-    <TextView
-        android:id="@+id/address_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="48/16, Wijerama Road"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/address_1_label"
-        app:layout_constraintTop_toBottomOf="@+id/address_1_label" />
-
-    <TextView
-        android:id="@+id/address_2_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Street"
-        app:layout_constraintStart_toStartOf="@+id/address_1"
-        app:layout_constraintTop_toBottomOf="@+id/address_1" />
-
-    <TextView
-        android:id="@+id/address_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Udahamulla"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/address_2_label"
-        app:layout_constraintTop_toBottomOf="@+id/address_2_label" />
-
-    <TextView
-        android:id="@+id/address_3_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="City"
-        app:layout_constraintStart_toStartOf="@+id/last_name"
-        app:layout_constraintTop_toTopOf="@+id/address_2_label" />
-
-    <TextView
-        android:id="@+id/address_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Nugegoda"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/address_3_label"
-        app:layout_constraintTop_toBottomOf="@+id/address_3_label" />
-
-    <TextView
-        android:id="@+id/role_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="User Role"
-        app:layout_constraintStart_toStartOf="@+id/address_2"
-        app:layout_constraintTop_toBottomOf="@+id/address_2" />
-
-    <TextView
-        android:id="@+id/role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Collector"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/role_label"
-        app:layout_constraintTop_toBottomOf="@+id/role_label" />
-
-    <Button
-        android:id="@+id/edit"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:text="Edit Profile"
-        app:layout_constraintStart_toStartOf="@+id/role"
-        app:layout_constraintTop_toBottomOf="@+id/role" />
-
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:text="Log out"
-        app:layout_constraintStart_toEndOf="@+id/edit"
-        app:layout_constraintTop_toTopOf="@+id/edit" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
