@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.jom.collector.DashboardActivity
 import org.jom.collector.R
+import org.jom.collector.profile.ViewProfileActivity
 
 class CollectionCompletedActivity : AppCompatActivity() {
 
@@ -27,7 +28,7 @@ class CollectionCompletedActivity : AppCompatActivity() {
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
 
-        // optional verification
+        // back to dashboard
         dashboard = findViewById(R.id.dashboard)
         dashboard.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
@@ -59,6 +60,9 @@ class CollectionCompletedActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_user -> {
+                    val intent = Intent(this, ViewProfileActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_user)
                     true
                 }

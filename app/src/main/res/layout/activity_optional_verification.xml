@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OptionalVerificationActivity">
+    tools:context=".collections.OptionalVerificationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -28,7 +28,7 @@
             app:srcCompat="@drawable/icon_back" />
 
         <TextView
-            android:id="@+id/collection_title"
+            android:id="@+id/page_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <TextView
-        android:id="@+id/collection_details"
+        android:id="@+id/profile_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -76,8 +76,8 @@
         android:text="Collection ID"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/collection_details"
-        app:layout_constraintTop_toBottomOf="@+id/collection_details" />
+        app:layout_constraintStart_toStartOf="@+id/profile_details"
+        app:layout_constraintTop_toBottomOf="@+id/profile_details" />
 
     <TextView
         android:id="@+id/collection_id"

@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.jom.collector.DashboardActivity
 import org.jom.collector.R
+import org.jom.collector.profile.ViewProfileActivity
 
 class OptionalVerificationActivity : AppCompatActivity() {
 
@@ -27,7 +28,7 @@ class OptionalVerificationActivity : AppCompatActivity() {
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
 
-        // complete collection
+        // verify amount
         verify = findViewById(R.id.verify)
         verify.setOnClickListener {
             val intent = Intent(this, CollectionCompletedActivity::class.java)
@@ -58,6 +59,9 @@ class OptionalVerificationActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_user -> {
+                    val intent = Intent(this, ViewProfileActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_user)
                     true
                 }

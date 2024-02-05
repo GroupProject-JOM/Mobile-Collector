@@ -13,25 +13,27 @@ import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
-
     private lateinit var logo: ImageView
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //back
+        // redirect login page to when logo is clicked
         logo = findViewById(R.id.JomLogo)
         logo.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
+        // nav and status bar colors
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.darkBoxShadow)
 
+        // auto redirect login page after 3s
         Handler(Looper.getMainLooper()).postDelayed({
-            var intent = Intent(this,LoginActivity :: class.java )
+            val intent = Intent(this,LoginActivity :: class.java )
             startActivity(intent)
         },3000.toLong())
 
