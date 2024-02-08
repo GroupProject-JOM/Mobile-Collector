@@ -4,13 +4,21 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.webkit.CookieManager
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import okhttp3.OkHttpClient
 import org.jom.collector.profile.ViewProfileActivity
+import java.net.CookieHandler
+import java.net.CookiePolicy
+import java.net.HttpCookie
+import java.net.URI
+import okhttp3.Request
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -50,6 +58,13 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+
+        val cookieManager = CookieManager.getInstance()
+
+        val cookies = getAllCookies(cookieManager)
+        for (cookie in cookies) {
+            Log.d("Cookie", "${cookie.first}=${cookie.second}")
+        }
 
         // nav and status bar color
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
@@ -121,5 +136,31 @@ class DashboardActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    fun getAllCookies(cookieManager: CookieManager): List<Pair<String, String>> {
+        // Get all cookies
+        val allCookies = cookieManager.getCookie("10.0.2.2")
+
+        // Initialize a list to store the parsed cookies
+        val parsedCookies = mutableListOf<Pair<String, String>>()
+
+        // Check if allCookies is not null or empty
+        if (!allCookies.isNullOrBlank()) {
+            // Split the cookies string into individual cookies
+            val cookieArray = allCookies.split("; ")
+
+            // Iterate through each cookie and parse it
+            for (cookie in cookieArray) {
+                // Split the cookie string into name and value
+                val parts = cookie.split("=")
+                if (parts.size == 2) {
+                    // Add the parsed cookie to the list
+                    parsedCookies.add(Pair(parts[0], parts[1]))
+                }
+            }
+        }
+
+        return parsedCookies
     }
 }
