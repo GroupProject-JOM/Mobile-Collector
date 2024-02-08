@@ -37,5 +37,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         },3000.toLong())
 
+        println("Helloooo")
+
     }
 }
