@@ -1,12 +1,17 @@
 package org.jom.collector
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.webkit.CookieManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -29,88 +34,179 @@ interface SigninApi {
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var sharedPreferences: SharedPreferences
     lateinit private var loginBtn: Button
+    var username_status = false
+    var password_status = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        sharedPreferences = getSharedPreferences("login_pref", Context.MODE_PRIVATE)
+
+        // Check if the user is already logged in
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+        if (isLoggedIn) {
+            // If the user is logged in, start the main activity
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finish() // Finish the login activity
+        }
+
+        // initialize dashboard activity
         val intent = Intent(this, DashboardActivity::class.java)
 
+        // set nav and status bar colors
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
         window.statusBarColor = ContextCompat.getColor(this, R.color.darkBoxShadow)
 
+        // set username and password input values to variables
+        val username: EditText = findViewById(R.id.username_input)
+        val password: EditText = findViewById(R.id.password_input)
+
+        var usernameError: TextView = findViewById(R.id.usernameError)
+        var passwordError: TextView = findViewById(R.id.passwordError)
+
+        // Error handling
+        fun username_status_func(username: String): Boolean {
+            val trimmedUsername = username.trim()
+            if (trimmedUsername.isEmpty()) {
+                usernameError.text = "Username cannot be empty"
+                username_status = false
+                return false
+            } else {
+                usernameError.text = ""
+                username_status = true
+                return true
+            }
+        }
+
+        // Error handling
+        fun password_status_func(password: String): Boolean {
+            val trimmedPassword = password.trim()
+            if (trimmedPassword.isEmpty()) {
+                passwordError.text = "Password cannot be empty"
+                password_status = false
+                return false
+            } else {
+                passwordError.text = ""
+                password_status = true
+                return true
+            }
+        }
+
+        // handle onInput change errors
+        val usernameTextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Not needed
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Not needed
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                username_status_func(s.toString())
+            }
+        }
+        val passwordTextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Not needed
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Not needed
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                password_status_func(s.toString())
+            }
+        }
+
+        username.addTextChangedListener(usernameTextWatcher)
+        password.addTextChangedListener(passwordTextWatcher)
+
+        // initialize login button
         loginBtn = findViewById(R.id.login)
 
         loginBtn.setOnClickListener {
+            if (!password_status_func(password.text.toString())) {
+                password.requestFocus()
+            }
+            if (!username_status_func(username.text.toString())) {
+                username.requestFocus()
+            }
 
-            val username: EditText = findViewById(R.id.username_input)
-            val password: EditText = findViewById(R.id.password_input)
+            if (username_status && password_status) {
+                val retrofit = Retrofit.Builder().baseUrl("http://10.0.2.2:8090/")
+                    .addConverterFactory(GsonConverterFactory.create()).build()
 
-            val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8090/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+                val signinApi = retrofit.create(SigninApi::class.java)
 
-            val signinApi = retrofit.create(SigninApi::class.java)
+                val formData = signInFormData(
+                    username = username.text.toString(),
+                    password = password.text.toString(),
+                )
 
-            val formData = signInFormData(
-                username = username.text.toString(),
-                password = password.text.toString(),
-            )
+                signinApi.signin(formData).enqueue(object : retrofit2.Callback<ResponseBody> {
+                    override fun onResponse(
+                        call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>
+                    ) {
+                        if (response.code() == 200) {
 
-            signinApi.signin(formData).enqueue(object : retrofit2.Callback<ResponseBody> {
-                override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: retrofit2.Response<ResponseBody>
-                ) {
-                    if (response.code() == 200) {
+                            val responseBody = response.body()
+                            responseBody?.let {
+                                val jsonString = it.string() // Convert response body to JSON string
+                                val jsonObject = JSONObject(jsonString)
+                                val message = jsonObject.optString("message")
+                                val jwt = jsonObject.optString("jwt")
+                                Log.d("TAG", message)
 
-                        val responseBody = response.body()
-                        responseBody?.let {
-                            val jsonString = it.string() // Convert response body to JSON string
-                            val jsonObject =
-                                JSONObject(jsonString) // Convert JSON string to JSONObject
-                            val message =
-                                jsonObject.optString("message") // Extract message field from JSON
-                            val jwt = jsonObject.optString("jwt")
-                            Log.d("TAG", message)
+                                val cookieManager = CookieManager.getInstance()
+                                val cookieName = "jwt"
+                                val cookieValue = jwt
+                                val domain = "10.0.2.2"
+                                val path = "/"
 
-                            val cookieManager = CookieManager.getInstance()
-                            val cookieName = "jwt"
-                            val cookieValue = jwt
-                            val domain = "10.0.2.2"
-                            val path = "/"
+                                // Create a cookie string
+                                val cookieString =
+                                    "$cookieName=$cookieValue; domain=$domain; path=$path"
 
-                            // Create a cookie string
-                            val cookieString =
-                                "$cookieName=$cookieValue; domain=$domain; path=$path"
+                                // Add the cookie to the CookieManager
+                                cookieManager.setCookie(domain, cookieString)
 
-                            // Add the cookie to the CookieManager
-                            cookieManager.setCookie(domain, cookieString)
-                        }
-                        startActivity(intent)
-                    } else {
-                        // Handle error
-                        Log.d("TAG", response.code().toString())
-                        val responseBody = response.body()
-                        responseBody?.let {
-                            val jsonString = it.string() // Convert response body to JSON string
-                            val jsonObject =
-                                JSONObject(jsonString) // Convert JSON string to JSONObject
-                            val message =
-                                jsonObject.optString("message") // Extract message field from JSON
-                            Log.d("TAG", message)
+                                // After successful login, store the login status in SharedPreferences
+                                sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
+                            }
+                            startActivity(intent)
+                            finish()
+                        } else if (response.code() == 202) {
+                            passwordError.text = "Invalid Password!"
+                            password.requestFocus()
+                        } else if (response.code() == 401) {
+                            usernameError.text = "Invalid Username!"
+                            username.requestFocus()
+                        } else {
+                            // Handle error
+                            Log.d("TAG", response.code().toString())
+                            val responseBody = response.body()
+                            responseBody?.let {
+                                val jsonString = it.string() // Convert response body to JSON string
+                                val jsonObject =
+                                    JSONObject(jsonString) // Convert JSON string to JSONObject
+                                val message =
+                                    jsonObject.optString("message") // Extract message field from JSON
+                                Log.d("TAG", message)
+                            }
                         }
                     }
-                }
 
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    // Handle failure
-                    Log.d("TAG", "An error occurred: $t")
-                }
-            })
-
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        // Handle failure
+                        Log.d("TAG", "An error occurred: $t")
+                    }
+                })
+            }
 
         }
     }
