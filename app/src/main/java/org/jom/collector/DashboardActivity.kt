@@ -1,70 +1,260 @@
 package org.jom.collector
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Typeface
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.webkit.CookieManager
 import android.widget.Button
+import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import org.jom.collector.profile.ViewProfileActivity
-import java.net.CookieHandler
-import java.net.CookiePolicy
-import java.net.HttpCookie
-import java.net.URI
-import okhttp3.Request
+import org.json.JSONObject
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import okhttp3.Response
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.http.GET
+import java.time.LocalTime
 
+interface DashboardApi {
+    @GET("JOM_war_exploded/collector")
+    fun getData(): Call<ResponseBody>
+}
+
+class AddCookiesInterceptor(private val cookies: Map<String, String>) : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val originalRequest = chain.request()
+        val requestBuilder = originalRequest.newBuilder()
+
+        for ((key, value) in cookies) {
+            requestBuilder.addHeader("Cookie", "$key=$value")
+        }
+
+        val newRequest = requestBuilder.build()
+        return chain.proceed(newRequest)
+    }
+}
 
 class DashboardActivity : AppCompatActivity() {
 
-    val todayCollectionItems = listOf(
-        CollectionItem("Maharagama", "10:00 AM", 500, "Cash"),
-        CollectionItem("Piliyandala", "11:30 AM", 750, "Cash"),
-        CollectionItem("Pannipitiya", "01:45 PM", 1000, "Bank"),
-        CollectionItem("Kirulapone", "11:30 AM", 750, "Cash"),
-        CollectionItem("Kohuwala", "01:45 PM", 1000, "Bank"),
-        CollectionItem("Nugegoda", "11:30 AM", 750, "Bank"),
-        CollectionItem("Udahamulla", "01:45 PM", 1000, "Bank"),
-        CollectionItem("Wijerama", "11:30 AM", 750, "Cash"),
-        CollectionItem("Navinna", "01:45 PM", 1000, "Bank"),
-        CollectionItem("Delkanda", "01:45 PM", 1000, "Bank"),
-    )
-    val upcomingCollectionItems = listOf(
-        CollectionItem("Maharagama", "2024-02-05 10:00 AM", 500, "Cash"),
-        CollectionItem("Piliyandala", "2024-02-05 11:30 AM", 750, "Cash"),
-        CollectionItem("Pannipitiya", "2024-02-05 01:45 PM", 1000, "Bank"),
-        CollectionItem("Kirulapone", "2024-02-05 11:30 AM", 750, "Cash"),
-        CollectionItem("Kohuwala", "2024-02-06 01:45 PM", 1000, "Bank"),
-        CollectionItem("Nugegoda", "2024-02-06 11:30 AM", 750, "Bank"),
-        CollectionItem("Udahamulla", "2024-02-06 01:45 PM", 1000, "Bank"),
-        CollectionItem("Wijerama", "2024-02-06 11:30 AM", 750, "Cash"),
-        CollectionItem("Navinna", "2024-02-06 01:45 PM", 1000, "Bank"),
-        CollectionItem("Delkanda", "2024-02-06 01:45 PM", 1000, "Bank"),
-    )
-
+    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var recycleViewToday: RecyclerView
     private lateinit var recycleViewUpcoming: RecyclerView
     private lateinit var todayCollectionsAdapter: CollectionsAdapter
     private lateinit var upcomingCollectionsAdapter: CollectionsAdapter
+    private lateinit var jwt: String
 
+    val todayCollectionItems = mutableListOf<CollectionItem>()
+    val upcomingCollectionItems = mutableListOf<CollectionItem>()
 
+    // get instance of methods class
+    val methods = Methods()
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        // get cookie operations
+        val cookieManager = CookieManager.getInstance()
+        val cookies = methods.getAllCookies(cookieManager)
+
+        // get jwt from cookie
+        for (cookie in cookies) {
+            if (cookie.first == "jwt") {
+                jwt = cookie.second
+            }
+            Log.d("Cookie", "${cookie.first}=${cookie.second}")
+        }
+        val cookiesMap = mapOf(
+            "jwt" to jwt,
+        )
+
+        // bind jwt for request
+        val client = OkHttpClient.Builder()
+            .addInterceptor(AddCookiesInterceptor(cookiesMap))
+            .build()
+
+        // generate request
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:8090/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val dashboardApi = retrofit.create(DashboardApi::class.java)
+
+        // call get data function to get data from backend
+        dashboardApi.getData().enqueue(object : retrofit2.Callback<ResponseBody> {
+            override fun onResponse(
+                call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>
+            ) {
+                if (response.code() == 200) {
+                    val responseBody = response.body()
+                    responseBody?.let {
+                        val jsonString = it.string() // Convert response body to JSON string
+                        val jsonObject = JSONObject(jsonString)
+                        val size = jsonObject.optString("size")
+                        val today = jsonObject.optString("today")
+                        val upcoming = jsonObject.optString("upcoming")
+                        val count = jsonObject.optString("count")
+                        val rate = jsonObject.getJSONObject("rate")
+                        Log.d("TAG", size)
+                        Log.d("TAG", today)
+                        Log.d("TAG", upcoming)
+                        Log.d("TAG", count)
+                        Log.d("TAG", rate.toString())
+
+                        val todayRate: TextView = findViewById(R.id.widget01_value)
+                        todayRate.text = rate.getString("price") + " LKR"
+
+                        val Remaining: TextView = findViewById(R.id.widget02_value)
+                        Remaining.text = count
+
+                        val todayList = jsonObject.getJSONArray("today")
+                        val upcomingList = jsonObject.getJSONArray("upcoming")
+
+                        for (i in 0 until todayList.length()) {
+                            val item = todayList.getJSONObject(i)
+
+                            val id = item.getInt("id")
+                            val area = item.getString("area")
+                            val time = methods.convertTime(item.getString("time"))
+                            val amount = item.getInt("amount")
+                            val method = item.getString("payment_method")
+
+                            todayCollectionItems.add(CollectionItem(id, area, time, amount, method))
+                        }
+
+                        for (i in 0 until upcomingList.length()) {
+                            val item = upcomingList.getJSONObject(i)
+
+                            val id = item.getInt("id")
+                            val area = item.getString("area")
+                            val time = methods.convertTime(item.getString("time"))
+                            val amount = item.getInt("amount")
+                            val method = item.getString("payment_method")
+
+                            upcomingCollectionItems.add(
+                                CollectionItem(
+                                    id,
+                                    area,
+                                    time,
+                                    amount,
+                                    method
+                                )
+                            )
+                        }
+                    }
+                } else if (response.code() == 202) {
+                    val responseBody = response.body()
+                    responseBody?.let {
+                        val jsonString = it.string() // Convert response body to JSON string
+                        val jsonObject = JSONObject(jsonString)
+                        val size = jsonObject.optInt("size")
+                        val count = jsonObject.optString("count")
+                        val rate = jsonObject.getJSONObject("rate")
+
+                        if (size == -2) {
+                            // no today and upcoming collections
+                        } else if (size == -1) {
+                            // no today
+                            val upcoming = jsonObject.optString("upcoming")
+                            Log.d("TAG", upcoming)
+
+                            val upcomingList = jsonObject.getJSONArray("upcoming")
+
+                            for (i in 0 until upcomingList.length()) {
+                                val item = upcomingList.getJSONObject(i)
+
+                                val id = item.getInt("id")
+                                val area = item.getString("area")
+                                val time = methods.convertTime(item.getString("time"))
+                                val amount = item.getInt("amount")
+                                val method = item.getString("payment_method")
+
+                                upcomingCollectionItems.add(
+                                    CollectionItem(
+                                        id,
+                                        area,
+                                        time,
+                                        amount,
+                                        method
+                                    )
+                                )
+                            }
+                        } else {
+                            // no upcoming
+                            val today = jsonObject.optString("today")
+                            Log.d("TAG", today)
+
+                            val todayList = jsonObject.getJSONArray("today")
+
+                            for (i in 0 until todayList.length()) {
+                                val item = todayList.getJSONObject(i)
+
+                                val id = item.getInt("id")
+                                val area = item.getString("area")
+                                val time = methods.convertTime(item.getString("time"))
+                                val amount = item.getInt("amount")
+                                val method = item.getString("payment_method")
+
+                                todayCollectionItems.add(
+                                    CollectionItem(
+                                        id,
+                                        area,
+                                        time,
+                                        amount,
+                                        method
+                                    )
+                                )
+                            }
+                        }
+
+                        val todayRate: TextView = findViewById(R.id.widget01_value)
+                        todayRate.text = rate.getString("price") + " LKR"
+
+                        val Remaining: TextView = findViewById(R.id.widget02_value)
+                        Remaining.text = count
+                    }
+                } else if (response.code() == 401) {
+                    // unauthorized
+                } else {
+                    Log.d("TAG", "Went wrong")
+                    Log.d("TAG", response.code().toString())
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<ResponseBody>, t: Throwable) {
+                // Handle failure
+                Log.d("TAG", "An error occurred: $t")
+            }
+        })
+
+        // after fetch all data
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-        val cookieManager = CookieManager.getInstance()
+        // set collector's name on dashboard
+        var collectorName: TextView = findViewById(R.id.collectorName)
+        sharedPreferences = getSharedPreferences("login_pref", Context.MODE_PRIVATE)
+        collectorName.text = sharedPreferences.getString("name", "Collector")
 
-        val cookies = getAllCookies(cookieManager)
-        for (cookie in cookies) {
-            Log.d("Cookie", "${cookie.first}=${cookie.second}")
-        }
+        // set greeting msg
+        var greeting: TextView = findViewById(R.id.greeting)
+        val currentTime = LocalTime.now()
+        greeting.text = methods.getGreetingTime(currentTime)
 
         // nav and status bar color
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
@@ -136,31 +326,7 @@ class DashboardActivity : AppCompatActivity() {
                 else -> false
             }
         }
-    }
 
-    fun getAllCookies(cookieManager: CookieManager): List<Pair<String, String>> {
-        // Get all cookies
-        val allCookies = cookieManager.getCookie("10.0.2.2")
 
-        // Initialize a list to store the parsed cookies
-        val parsedCookies = mutableListOf<Pair<String, String>>()
-
-        // Check if allCookies is not null or empty
-        if (!allCookies.isNullOrBlank()) {
-            // Split the cookies string into individual cookies
-            val cookieArray = allCookies.split("; ")
-
-            // Iterate through each cookie and parse it
-            for (cookie in cookieArray) {
-                // Split the cookie string into name and value
-                val parts = cookie.split("=")
-                if (parts.size == 2) {
-                    // Add the parsed cookie to the list
-                    parsedCookies.add(Pair(parts[0], parts[1]))
-                }
-            }
-        }
-
-        return parsedCookies
     }
 }

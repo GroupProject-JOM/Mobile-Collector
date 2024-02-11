@@ -68,7 +68,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="10dp"
-            android:text="Good Morning"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/lightSidebarColor"
             android:textSize="24sp"
@@ -77,10 +76,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/collectorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Collector"
             android:textColor="@color/lightPrimaryColor"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/greeting"
@@ -94,7 +92,7 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/widget_bg"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name">
+            app:layout_constraintTop_toBottomOf="@+id/collectorName">
 
             <ImageView
                 android:id="@+id/widget01_image"
@@ -111,7 +109,6 @@
                 android:id="@+id/widget01_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="60 LKR"
                 android:textColor="@color/lightBodyColor"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -138,7 +135,7 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/widget_bg"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name">
+            app:layout_constraintTop_toBottomOf="@+id/collectorName">
 
             <ImageView
                 android:id="@+id/widget02_image"
@@ -155,7 +152,6 @@
                 android:id="@+id/widget02_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12"
                 android:textColor="@color/lightBodyColor"
                 android:textSize="20sp"
                 android:textStyle="bold"
