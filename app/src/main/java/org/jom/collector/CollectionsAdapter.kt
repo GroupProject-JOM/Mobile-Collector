@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import org.jom.collector.collections.ViewCollectionActivity
 
 data class CollectionItem(
-    val location: String,
+    val id: Int,
+    val area: String,
     val time: String,
     val amount: Int,
     val method: String
@@ -40,12 +41,12 @@ class CollectionsAdapter(private val collectionItems: List<CollectionItem>) :
     override fun onBindViewHolder(holder: CollectionsViewHolder, position: Int) {
         val currentItem = collectionItems[position]
 
-        holder.collectionLocation.text = currentItem.location
+        holder.collectionLocation.text = currentItem.area
         holder.collectionTime.text = currentItem.time
         holder.collectionAmount.text = currentItem.amount.toString()
         holder.collectionPayment.text = currentItem.method.capitalize()
 
-        if (currentItem.method == "Bank") {
+        if (currentItem.method == "bank") {
             holder.collectionPaymentIcon.setImageResource(R.drawable.icon_bank)
         }
 
@@ -63,7 +64,7 @@ class CollectionsAdapter(private val collectionItems: List<CollectionItem>) :
         // Display a toast with all the data when the card is clicked
         holder.itemView.setOnLongClickListener {
             val toastMessage =
-                "Name: ${currentItem.location}\nTime: ${currentItem.time}\nAmount: ${currentItem.amount}"
+                "Area: ${currentItem.area}\nTime: ${currentItem.time}\nAmount: ${currentItem.amount}"
             Toast.makeText(holder.itemView.context, toastMessage, Toast.LENGTH_SHORT).show()
 
             true

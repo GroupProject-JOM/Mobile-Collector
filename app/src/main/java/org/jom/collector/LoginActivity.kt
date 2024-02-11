@@ -3,6 +3,7 @@ package org.jom.collector
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -12,6 +13,8 @@ import android.webkit.CookieManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -31,13 +34,15 @@ interface SigninApi {
     fun signin(@Body formData: signInFormData): Call<ResponseBody>
 }
 
-
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     lateinit private var loginBtn: Button
     var username_status = false
     var password_status = false
+
+    // get instance of methods class
+    val methods = Methods()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -149,6 +154,7 @@ class LoginActivity : AppCompatActivity() {
                 )
 
                 signinApi.signin(formData).enqueue(object : retrofit2.Callback<ResponseBody> {
+                    @RequiresApi(Build.VERSION_CODES.O)
                     override fun onResponse(
                         call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>
                     ) {
@@ -175,9 +181,25 @@ class LoginActivity : AppCompatActivity() {
                                 // Add the cookie to the CookieManager
                                 cookieManager.setCookie(domain, cookieString)
 
+                                var payload = methods.getPayload(jwt);
+                                val name = payload["name"]
+
+                                // check if not a collector
+                                val role = payload["page"]
+                                if (role != "collector") {
+                                    val toastMessage = "You are not a collector. you can not login to this portal."
+                                    Toast.makeText(applicationContext, toastMessage, Toast.LENGTH_SHORT).show()
+
+                                    username.text.clear()
+                                    password.text.clear()
+                                    return
+                                }
+
                                 // After successful login, store the login status in SharedPreferences
                                 sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
+                                sharedPreferences.edit().putString("name", name.toString()).apply()
                             }
+
                             startActivity(intent)
                             finish()
                         } else if (response.code() == 202) {
