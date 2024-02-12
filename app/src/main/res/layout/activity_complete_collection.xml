@@ -55,11 +55,11 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <TextView
-        android:id="@+id/profile_details"
+        android:id="@+id/collection_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/roboto"
         android:text="Collection Details"
         android:textColor="#000000"
@@ -69,110 +69,221 @@
         app:layout_constraintTop_toBottomOf="@+id/topBarShadow" />
 
     <TextView
-        android:id="@+id/supplier_name_text"
+        android:id="@+id/id_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Collection ID"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/profile_details"
-        app:layout_constraintTop_toBottomOf="@+id/profile_details" />
+        app:layout_constraintStart_toStartOf="@+id/collection_details"
+        app:layout_constraintTop_toBottomOf="@+id/collection_details" />
+
+    <TextView
+        android:id="@+id/collection_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/id_text"
+        app:layout_constraintTop_toTopOf="@+id/id_text" />
+
+    <TextView
+        android:id="@+id/supplier_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Supplier Name"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/id_text"
+        app:layout_constraintTop_toBottomOf="@+id/collection_id" />
 
     <TextView
         android:id="@+id/supplier_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:text="C0001"
+        android:layout_marginEnd="30dp"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/supplier_name_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/collection_id"
         app:layout_constraintTop_toTopOf="@+id/supplier_name_text" />
 
     <TextView
         android:id="@+id/supplier_phone_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Location"
+        android:layout_marginTop="6dp"
+        android:text="Supplier Phone"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/supplier_name_text"
-        app:layout_constraintTop_toBottomOf="@+id/supplier_name_text" />
+        app:layout_constraintTop_toBottomOf="@+id/supplier_name" />
 
     <TextView
-        android:id="@+id/supplier_phone"
-        android:layout_width="wrap_content"
+        android:id="@+id/phone"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Ahangama"
+        android:layout_marginEnd="30dp"
         android:textColor="#000000"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/supplier_name"
         app:layout_constraintTop_toTopOf="@+id/supplier_phone_text" />
 
     <TextView
-        android:id="@+id/estate_text"
+        android:id="@+id/address_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Coconut Count"
+        android:layout_marginTop="6dp"
+        android:text="Estate Address"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/supplier_phone_text"
-        app:layout_constraintTop_toBottomOf="@+id/supplier_phone_text" />
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
 
     <TextView
-        android:id="@+id/estate"
-        android:layout_width="wrap_content"
+        android:id="@+id/address"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="1000"
+        android:layout_marginEnd="30dp"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/supplier_phone"
-        app:layout_constraintTop_toTopOf="@+id/estate_text" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/phone"
+        app:layout_constraintTop_toTopOf="@+id/address_text" />
 
     <TextView
         android:id="@+id/date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Owner Name"
+        android:layout_marginTop="6dp"
+        android:text="Pickup Date"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/estate_text"
-        app:layout_constraintTop_toBottomOf="@+id/estate_text" />
+        app:layout_constraintStart_toStartOf="@+id/address_text"
+        app:layout_constraintTop_toBottomOf="@+id/address" />
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="A.B.C. Silva"
+        android:layout_marginEnd="30dp"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/estate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/address"
         app:layout_constraintTop_toTopOf="@+id/date_text" />
+
+    <TextView
+        android:id="@+id/actual_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Actual Coconut Amount"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/payment_text"
+        app:layout_constraintTop_toBottomOf="@+id/payment_text" />
+
+    <EditText
+        android:id="@+id/actual"
+        android:layout_width="215dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/actual_text"
+        app:layout_constraintTop_toBottomOf="@+id/actual_text" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="291dp"
+        android:layout_height="wrap_content"
+        android:text="Upon Submission, Supplier will verify the coconut amount using his application. "
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/actualError"
+        app:layout_constraintTop_toBottomOf="@+id/actualError" />
 
     <TextView
         android:id="@+id/time_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Owner Mobile"
+        android:layout_marginTop="6dp"
+        android:text="Pickup Time"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/date_text"
-        app:layout_constraintTop_toBottomOf="@+id/date_text" />
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <TextView
-        android:id="@+id/owner_mobile"
-        android:layout_width="wrap_content"
+        android:id="@+id/time"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="076 432 9012"
+        android:layout_marginEnd="30dp"
         android:textColor="#000000"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/date"
         app:layout_constraintTop_toTopOf="@+id/time_text" />
+
+    <TextView
+        android:id="@+id/amount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Coconut Count"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/time_text"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/time"
+        app:layout_constraintTop_toTopOf="@+id/amount_text" />
+
+    <TextView
+        android:id="@+id/payment_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Payment Method"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/amount_text"
+        app:layout_constraintTop_toBottomOf="@+id/amount" />
+
+    <TextView
+        android:id="@+id/payment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/amount"
+        app:layout_constraintTop_toTopOf="@+id/payment_text" />
+
+    <Button
+        android:id="@+id/complete"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="70dp"
+        android:text="Complete Collection"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:id="@+id/bottomNavContainer"
@@ -194,40 +305,13 @@
         app:menu="@menu/nav_menu" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/actualError"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:text="Actual Coconut Amount"
-        app:layout_constraintStart_toStartOf="@+id/time_text"
-        app:layout_constraintTop_toBottomOf="@+id/time_text" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimal"
-        android:layout_width="215dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="291dp"
-        android:layout_height="wrap_content"
-        android:text="Upon Submission, Supplier will verify the coconut amount using his application. "
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumberDecimal"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
-
-    <Button
-        android:id="@+id/complete"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="120dp"
-        android:text="Complete Collection"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
+        android:layout_marginEnd="30dp"
+        android:textColor="#FA0000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/actual"
+        app:layout_constraintTop_toBottomOf="@+id/actual" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

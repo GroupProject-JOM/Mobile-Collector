@@ -38,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     lateinit private var loginBtn: Button
+
+    // status variables for validations
     var username_status = false
     var password_status = false
 
