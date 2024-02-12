@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/topBarShadow" />
 
     <TextView
-        android:id="@+id/collection_id_text"
+        android:id="@+id/supplier_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -80,57 +80,57 @@
         app:layout_constraintTop_toBottomOf="@+id/profile_details" />
 
     <TextView
-        android:id="@+id/collection_id"
+        android:id="@+id/supplier_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
         android:text="C0001"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/collection_id_text"
-        app:layout_constraintTop_toTopOf="@+id/collection_id_text" />
+        app:layout_constraintStart_toStartOf="@+id/supplier_name_text"
+        app:layout_constraintTop_toTopOf="@+id/supplier_name_text" />
 
     <TextView
-        android:id="@+id/location_text"
+        android:id="@+id/supplier_phone_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Location"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/collection_id_text"
-        app:layout_constraintTop_toBottomOf="@+id/collection_id_text" />
+        app:layout_constraintStart_toStartOf="@+id/supplier_name_text"
+        app:layout_constraintTop_toBottomOf="@+id/supplier_name_text" />
 
     <TextView
-        android:id="@+id/city"
+        android:id="@+id/supplier_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ahangama"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/collection_id"
-        app:layout_constraintTop_toTopOf="@+id/location_text" />
+        app:layout_constraintStart_toStartOf="@+id/supplier_name"
+        app:layout_constraintTop_toTopOf="@+id/supplier_phone_text" />
 
     <TextView
-        android:id="@+id/coconut_count_text"
+        android:id="@+id/estate_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Coconut Count"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/location_text"
-        app:layout_constraintTop_toBottomOf="@+id/location_text" />
+        app:layout_constraintStart_toStartOf="@+id/supplier_phone_text"
+        app:layout_constraintTop_toBottomOf="@+id/supplier_phone_text" />
 
     <TextView
-        android:id="@+id/coconut_count"
+        android:id="@+id/estate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1000"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/city"
-        app:layout_constraintTop_toTopOf="@+id/coconut_count_text" />
+        app:layout_constraintStart_toStartOf="@+id/supplier_phone"
+        app:layout_constraintTop_toTopOf="@+id/estate_text" />
 
     <TextView
         android:id="@+id/actual_count_text"
@@ -140,8 +140,8 @@
         android:text="Actual Count"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/coconut_count_text"
-        app:layout_constraintTop_toBottomOf="@+id/coconut_count_text" />
+        app:layout_constraintStart_toStartOf="@+id/estate_text"
+        app:layout_constraintTop_toBottomOf="@+id/estate_text" />
 
     <TextView
         android:id="@+id/actual_count"
@@ -150,11 +150,11 @@
         android:text="900"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/coconut_count"
+        app:layout_constraintStart_toStartOf="@+id/estate"
         app:layout_constraintTop_toTopOf="@+id/actual_count_text" />
 
     <TextView
-        android:id="@+id/owner_name_text"
+        android:id="@+id/date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -165,25 +165,25 @@
         app:layout_constraintTop_toBottomOf="@+id/actual_count_text" />
 
     <TextView
-        android:id="@+id/owner_name"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="A.B.C. Silva"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/coconut_count"
-        app:layout_constraintTop_toTopOf="@+id/owner_name_text" />
+        app:layout_constraintStart_toStartOf="@+id/estate"
+        app:layout_constraintTop_toTopOf="@+id/date_text" />
 
     <TextView
-        android:id="@+id/owner_mobile_text"
+        android:id="@+id/time_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Owner Mobile"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/owner_name_text"
-        app:layout_constraintTop_toBottomOf="@+id/owner_name_text" />
+        app:layout_constraintStart_toStartOf="@+id/date_text"
+        app:layout_constraintTop_toBottomOf="@+id/date_text" />
 
     <TextView
         android:id="@+id/owner_mobile"
@@ -192,8 +192,8 @@
         android:text="076 432 9012"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/owner_name"
-        app:layout_constraintTop_toTopOf="@+id/owner_mobile_text" />
+        app:layout_constraintStart_toStartOf="@+id/date"
+        app:layout_constraintTop_toTopOf="@+id/time_text" />
 
     <View
         android:id="@+id/bottomNavContainer"
@@ -222,8 +222,8 @@
         android:text="Collection Marked as Complete"
         android:textColor="#4E9A02"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/owner_mobile_text"
-        app:layout_constraintTop_toBottomOf="@+id/owner_mobile_text" />
+        app:layout_constraintStart_toStartOf="@+id/time_text"
+        app:layout_constraintTop_toBottomOf="@+id/time_text" />
 
     <Button
         android:id="@+id/dashboard"

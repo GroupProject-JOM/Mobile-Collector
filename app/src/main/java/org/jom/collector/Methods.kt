@@ -5,6 +5,7 @@ import android.webkit.CookieManager
 import androidx.annotation.RequiresApi
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.util.Base64
@@ -76,5 +77,11 @@ class Methods {
             else -> "Good Morning"
         }
         return g
+    }
+
+    fun formatAmount(amount: Double): String {
+        val locale = Locale("en", "US")
+        val numberFormat = NumberFormat.getInstance(locale)
+        return numberFormat.format(amount)
     }
 }

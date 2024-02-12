@@ -6,6 +6,211 @@
     android:layout_height="match_parent"
     tools:context=".collections.ViewCollectionActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapView" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/profile_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="50dp"
+                android:text="Collection Details"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/supplier_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Supplier Name"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/profile_details"
+                app:layout_constraintTop_toBottomOf="@+id/profile_details" />
+
+            <TextView
+                android:id="@+id/supplier_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="170dp"
+                android:layout_marginEnd="30dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/supplier_name_text"
+                app:layout_constraintTop_toTopOf="@+id/supplier_name_text" />
+
+            <TextView
+                android:id="@+id/supplier_phone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Supplier Phone"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/supplier_name_text"
+                app:layout_constraintTop_toBottomOf="@+id/supplier_name" />
+
+            <TextView
+                android:id="@+id/supplier_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/supplier_name"
+                app:layout_constraintTop_toTopOf="@+id/supplier_phone_text" />
+
+            <TextView
+                android:id="@+id/estate_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Estate Address"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/supplier_phone_text"
+                app:layout_constraintTop_toBottomOf="@+id/supplier_phone" />
+
+            <TextView
+                android:id="@+id/estate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/supplier_phone"
+                app:layout_constraintTop_toTopOf="@+id/estate_text" />
+
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Pickup Date"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/estate_text"
+                app:layout_constraintTop_toBottomOf="@+id/estate" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/estate"
+                app:layout_constraintTop_toTopOf="@+id/date_text" />
+
+            <TextView
+                android:id="@+id/time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Pickup Time"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/date_text"
+                app:layout_constraintTop_toBottomOf="@+id/date" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/date"
+                app:layout_constraintTop_toTopOf="@+id/time_text" />
+
+            <Button
+                android:id="@+id/direction"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:text="Get Directions"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/payment_text"
+                app:layout_constraintTop_toBottomOf="@+id/payment_text" />
+
+            <Button
+                android:id="@+id/complete"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_marginStart="20dp"
+                android:text="Mark as Complete"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/direction"
+                app:layout_constraintTop_toTopOf="@+id/direction" />
+
+            <TextView
+                android:id="@+id/count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Coconut Count"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/time_text"
+                app:layout_constraintTop_toBottomOf="@+id/time" />
+
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/time"
+                app:layout_constraintTop_toTopOf="@+id/count_text" />
+
+            <TextView
+                android:id="@+id/payment_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Paymment Method"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/count_text"
+                app:layout_constraintTop_toBottomOf="@+id/count" />
+
+            <TextView
+                android:id="@+id/payment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/count"
+                app:layout_constraintTop_toTopOf="@+id/payment_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
@@ -44,125 +249,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <TextView
-        android:id="@+id/profile_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:text="Collection Details"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
-
-    <TextView
-        android:id="@+id/collection_id_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Collection ID"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/profile_details"
-        app:layout_constraintTop_toBottomOf="@+id/profile_details" />
-
-    <TextView
-        android:id="@+id/collection_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:text="C0001"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/collection_id_text"
-        app:layout_constraintTop_toTopOf="@+id/collection_id_text" />
-
-    <TextView
-        android:id="@+id/location_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Location"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/collection_id_text"
-        app:layout_constraintTop_toBottomOf="@+id/collection_id_text" />
-
-    <TextView
-        android:id="@+id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ahangama"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/collection_id"
-        app:layout_constraintTop_toTopOf="@+id/location_text" />
-
-    <TextView
-        android:id="@+id/coconut_count_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Coconut Count"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/location_text"
-        app:layout_constraintTop_toBottomOf="@+id/location_text" />
-
-    <TextView
-        android:id="@+id/coconut_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1000"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/city"
-        app:layout_constraintTop_toTopOf="@+id/coconut_count_text" />
-
-    <TextView
-        android:id="@+id/owner_name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Owner Name"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/coconut_count_text"
-        app:layout_constraintTop_toBottomOf="@+id/coconut_count_text" />
-
-    <TextView
-        android:id="@+id/owner_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="A.B.C. Silva"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/coconut_count"
-        app:layout_constraintTop_toTopOf="@+id/owner_name_text" />
-
-    <TextView
-        android:id="@+id/owner_mobile_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Owner Mobile"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/owner_name_text"
-        app:layout_constraintTop_toBottomOf="@+id/owner_name_text" />
-
-    <TextView
-        android:id="@+id/owner_mobile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="076 432 9012"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/owner_name"
-        app:layout_constraintTop_toTopOf="@+id/owner_mobile_text" />
-
     <View
         android:id="@+id/bottomNavContainer"
         android:layout_width="match_parent"
@@ -182,31 +268,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/nav_menu" />
 
-    <Button
-        android:id="@+id/direction"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:text="Get Directions"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/owner_mobile_text"
-        app:layout_constraintTop_toBottomOf="@+id/owner_mobile_text" />
-
-    <Button
-        android:id="@+id/complete"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:text="Mark as Complete"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/direction"
-        app:layout_constraintTop_toTopOf="@+id/direction" />
-
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="391dp"
+        android:layout_width="match_parent"
         android:layout_height="350dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

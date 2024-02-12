@@ -54,7 +54,7 @@ class CollectionsAdapter(private val collectionItems: List<CollectionItem>) :
             val intent = Intent(holder.itemView.context, ViewCollectionActivity::class.java)
 
             // Pass data to the next activity if needed
-//            intent.putExtra("collectionName", currentItem.name)
+            intent.putExtra("id", currentItem.id)
 //            intent.putExtra("collectionTime", currentItem.time)
 //            intent.putExtra("collectionAmount", currentItem.amount)
 
