@@ -90,16 +90,8 @@ class DashboardActivity : AppCompatActivity() {
                     responseBody?.let {
                         val jsonString = it.string() // Convert response body to JSON string
                         val jsonObject = JSONObject(jsonString)
-                        val size = jsonObject.optString("size")
-                        val today = jsonObject.optString("today")
-                        val upcoming = jsonObject.optString("upcoming")
                         val count = jsonObject.optString("count")
                         val rate = jsonObject.getJSONObject("rate")
-                        Log.d("TAG", size)
-                        Log.d("TAG", today)
-                        Log.d("TAG", upcoming)
-                        Log.d("TAG", count)
-                        Log.d("TAG", rate.toString())
 
                         val todayRate: TextView = findViewById(R.id.widget01_value)
                         todayRate.text = rate.getString("price") + " LKR"
@@ -155,9 +147,6 @@ class DashboardActivity : AppCompatActivity() {
                             // no today and upcoming collections
                         } else if (size == -1) {
                             // no today
-                            val upcoming = jsonObject.optString("upcoming")
-                            Log.d("TAG", upcoming)
-
                             val upcomingList = jsonObject.getJSONArray("upcoming")
 
                             for (i in 0 until upcomingList.length()) {
@@ -181,9 +170,6 @@ class DashboardActivity : AppCompatActivity() {
                             }
                         } else {
                             // no upcoming
-                            val today = jsonObject.optString("today")
-                            Log.d("TAG", today)
-
                             val todayList = jsonObject.getJSONArray("today")
 
                             for (i in 0 until todayList.length()) {
