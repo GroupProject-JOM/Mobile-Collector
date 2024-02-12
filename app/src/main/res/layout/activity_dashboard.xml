@@ -195,8 +195,8 @@
             android:id="@+id/midNavVerticalShadow"
             android:layout_width="4dp"
             android:layout_height="match_parent"
-            android:background="@drawable/right_shadow"
-            android:layout_above="@+id/linearLayout" />
+            android:layout_above="@+id/linearLayout"
+            android:background="@drawable/right_shadow" />
 
         <Button
             android:id="@+id/upcoming"

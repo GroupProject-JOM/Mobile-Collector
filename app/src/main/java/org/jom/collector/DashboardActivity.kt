@@ -34,20 +34,6 @@ interface DashboardApi {
     fun getData(): Call<ResponseBody>
 }
 
-class AddCookiesInterceptor(private val cookies: Map<String, String>) : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val originalRequest = chain.request()
-        val requestBuilder = originalRequest.newBuilder()
-
-        for ((key, value) in cookies) {
-            requestBuilder.addHeader("Cookie", "$key=$value")
-        }
-
-        val newRequest = requestBuilder.build()
-        return chain.proceed(newRequest)
-    }
-}
-
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
@@ -75,7 +61,6 @@ class DashboardActivity : AppCompatActivity() {
             if (cookie.first == "jwt") {
                 jwt = cookie.second
             }
-            Log.d("Cookie", "${cookie.first}=${cookie.second}")
         }
         val cookiesMap = mapOf(
             "jwt" to jwt,
