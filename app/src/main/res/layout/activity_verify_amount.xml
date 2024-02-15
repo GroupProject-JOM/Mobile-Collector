@@ -220,9 +220,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/default_layout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#DDDDDD"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -258,6 +260,56 @@
             android:text="Optional Verification"
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/optional_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#DDDDDD"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/verify_text"
+            android:layout_width="297dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="46dp"
+            android:text="OTP Sent to Supplier’s Mobile Number"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/verify"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginTop="4dp"
+            android:text="Complete Collection"
+            app:layout_constraintStart_toStartOf="@+id/otpError"
+            app:layout_constraintTop_toBottomOf="@+id/otpError" />
+
+        <EditText
+            android:id="@+id/otp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toStartOf="@+id/verify_text"
+            app:layout_constraintTop_toBottomOf="@+id/verify_text" />
+
+        <TextView
+            android:id="@+id/otpError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/otp"
+            app:layout_constraintTop_toBottomOf="@+id/otp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
