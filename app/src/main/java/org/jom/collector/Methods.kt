@@ -84,4 +84,8 @@ class Methods {
         val numberFormat = NumberFormat.getInstance(locale)
         return numberFormat.format(amount)
     }
+
+    fun floatToInt(s: Any?): Int {
+        return s.toString().toFloat().toInt()
+    }
 }
