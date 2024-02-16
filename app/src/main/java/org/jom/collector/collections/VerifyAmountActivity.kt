@@ -91,6 +91,9 @@ class VerifyAmountActivity : AppCompatActivity() {
 
     var otpId = 0
 
+    // get bundle instance for send data for next intent
+    var extras = Bundle()
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,7 +114,7 @@ class VerifyAmountActivity : AppCompatActivity() {
 
         // get intent instance and bundle
         var i = intent
-        var extras = i.extras!!
+        extras = i.extras!!
 
         // get put data from bundle and assign to text views
         collection_id.text = extras.getString("id")
@@ -309,6 +312,7 @@ class VerifyAmountActivity : AppCompatActivity() {
                         .setConfirmClickListener {
                             // back to enter amount with supplier's denied msg
                             val intent = Intent(this, CompleteCollectionActivity::class.java)
+                            intent.putExtras(extras)
                             startActivity(intent)
                             finish()
                         }.show()
@@ -358,6 +362,7 @@ class VerifyAmountActivity : AppCompatActivity() {
                     call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>
                 ) {
                     if (response.code() == 200) {
+                        intent.putExtras(extras)
                         startActivity(intent)
                         finish()
                     } else if (response.code() == 409) {
