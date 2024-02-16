@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
 
         <!-- Default font-->
-        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textColor">@color/lightPrimaryColor</item>
     </style>
 </resources>

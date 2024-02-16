@@ -32,7 +32,8 @@
     <color name="lightBackgroundGrey">#f0efef</color>
     <color name="lightActionbarColor">#e9e9e9</color>
     <color name="lightSidebarIcon">#ffffff</color>
-    <color name="lightProfileLabel">#333333</color>
+    <color name="lightProfileValue">#333333</color>
+    <color name="lightProfileLabel">#626262</color>
     <color name="lightStockLv1">#feffd6</color>
     <color name="lightStockLv2">#fff8b8</color>
     <color name="lightStockLv3">#caf2c2</color>

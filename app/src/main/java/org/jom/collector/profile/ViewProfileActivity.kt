@@ -1,14 +1,17 @@
 package org.jom.collector.profile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.jom.collector.DashboardActivity
 import org.jom.collector.R
+
 
 class ViewProfileActivity : AppCompatActivity() {
 
