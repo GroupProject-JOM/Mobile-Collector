@@ -12,6 +12,9 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <!-- Default font-->
+        <item name="android:fontFamily">@font/inter_semibold</item>
     </style>
 
     <!-- Dark theme. -->
@@ -27,5 +30,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your dark theme here. -->
+
+        <!-- Default font-->
+        <item name="android:fontFamily">@font/inter_semibold</item>
     </style>
 </resources>
