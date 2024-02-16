@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.jom.collector.DashboardActivity
@@ -20,6 +21,32 @@ class CollectionCompletedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collection_completed)
 
+        // initialize text views
+        val collection_id: TextView = findViewById(R.id.collection_id)
+        val name: TextView = findViewById(R.id.name)
+        val phone: TextView = findViewById(R.id.phone)
+        val estate: TextView = findViewById(R.id.estate)
+        val date: TextView = findViewById(R.id.date)
+        val time: TextView = findViewById(R.id.time)
+        val amount: TextView = findViewById(R.id.count)
+        val actual: TextView = findViewById(R.id.actual)
+        val payment: TextView = findViewById(R.id.payment)
+
+        // get intent instance and bundle
+        var i = intent
+        var extras = i.extras!!
+
+        // get put data from bundle and assign to text views
+        collection_id.text = extras.getString("id")
+        name.text = extras.getString("name")
+        phone.text = extras.getString("phone")
+        estate.text = extras.getString("address")
+        date.text = extras.getString("date")
+        time.text = extras.getString("time")
+        amount.text = extras.getString("amount")
+        actual.text = extras.getString("actual")
+        payment.text = extras.getString("payment")
+
         //back
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
@@ -34,7 +61,6 @@ class CollectionCompletedActivity : AppCompatActivity() {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
-
 
         // bottom nav handler
         bottomNavigationView = findViewById(R.id.bottom_nav)
