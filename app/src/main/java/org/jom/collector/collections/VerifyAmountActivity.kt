@@ -228,8 +228,8 @@ class VerifyAmountActivity : AppCompatActivity() {
         backButton.setOnClickListener { this.onBackPressed() }
 
         // nav and status bar color
-        window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
 
         // optional verification
         optional = findViewById(R.id.optional)

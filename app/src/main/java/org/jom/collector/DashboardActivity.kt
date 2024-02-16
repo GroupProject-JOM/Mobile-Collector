@@ -228,8 +228,8 @@ class DashboardActivity : AppCompatActivity() {
         greeting.text = methods.getGreetingTime(currentTime)
 
         // nav and status bar color
-        window.navigationBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.lightPrimaryColor)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
 
         // recycle views handle
         recycleViewToday = findViewById(R.id.recycleViewToday)

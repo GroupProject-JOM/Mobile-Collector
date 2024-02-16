@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
 
         // set nav and status bar colors
         window.navigationBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.darkBoxShadow)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
 
         // set username and password input values to variables
         val username: EditText = findViewById(R.id.username_input)
