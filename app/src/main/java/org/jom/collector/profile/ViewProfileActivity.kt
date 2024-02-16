@@ -12,7 +12,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.jom.collector.DashboardActivity
 import org.jom.collector.R
 
-
 class ViewProfileActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
