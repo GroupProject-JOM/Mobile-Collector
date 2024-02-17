@@ -145,7 +145,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             if (username_status && password_status) {
-                val retrofit = Retrofit.Builder().baseUrl("http://10.0.2.2:8090/")
+                val retrofit = Retrofit.Builder().baseUrl(methods.getBackendUrl())
                     .addConverterFactory(GsonConverterFactory.create()).build()
 
                 val signinApi = retrofit.create(SigninApi::class.java)
