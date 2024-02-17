@@ -23,9 +23,6 @@
             android:name=".collections.CollectionCompletedActivity"
             android:exported="false" />
         <activity
-            android:name=".collections.OptionalVerificationActivity"
-            android:exported="false" />
-        <activity
             android:name=".collections.VerifyAmountActivity"
             android:exported="false" />
         <activity
