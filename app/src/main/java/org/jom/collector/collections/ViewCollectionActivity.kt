@@ -67,7 +67,7 @@ class ViewCollectionActivity : AppCompatActivity() {
 
         // generate request
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8090/")
+            .baseUrl(methods.getBackendUrl())
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
