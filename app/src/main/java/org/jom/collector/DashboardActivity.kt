@@ -272,6 +272,9 @@ class DashboardActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_home)
                     true
                 }
