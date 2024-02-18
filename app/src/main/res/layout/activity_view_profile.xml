@@ -102,7 +102,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Buddhika"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/first_name_label"
                     app:layout_constraintTop_toBottomOf="@+id/first_name_label" />
@@ -119,30 +118,30 @@
 
                 <TextView
                     android:id="@+id/last_name"
-                    android:layout_width="wrap_content"
+                    style="@style/profileValue"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Senanayake"
-                    style="@style/profileValue"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/last_name_label"
                     app:layout_constraintTop_toBottomOf="@+id/last_name_label" />
 
                 <TextView
                     android:id="@+id/email_label"
+                    style="@style/profileLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="30dp"
                     android:text="Email Address"
-                    style="@style/profileLabel"
                     app:layout_constraintStart_toStartOf="@+id/first_name"
-                    app:layout_constraintTop_toBottomOf="@+id/first_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/last_name" />
 
                 <TextView
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="bnsbuddhika@gmail.com"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/email_label"
                     app:layout_constraintTop_toBottomOf="@+id/email_label" />
@@ -162,7 +161,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="0713270510"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/contact_label"
                     app:layout_constraintTop_toBottomOf="@+id/contact_label" />
@@ -182,7 +180,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="200121503100"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/nic_label"
                     app:layout_constraintTop_toBottomOf="@+id/nic_label" />
@@ -202,7 +199,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="2001-08-02"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/dob_label"
                     app:layout_constraintTop_toBottomOf="@+id/dob_label" />
@@ -222,7 +218,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Male"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/gender_label"
                     app:layout_constraintTop_toBottomOf="@+id/gender_label" />
@@ -242,7 +237,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="48/16, Wijerama Road"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/address_1_label"
                     app:layout_constraintTop_toBottomOf="@+id/address_1_label" />
@@ -262,7 +256,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Udahamulla"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/address_2_label"
                     app:layout_constraintTop_toBottomOf="@+id/address_2_label" />
@@ -278,30 +271,30 @@
 
                 <TextView
                     android:id="@+id/address_3"
-                    android:layout_width="wrap_content"
+                    style="@style/profileValue"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Nugegoda"
-                    style="@style/profileValue"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/address_3_label"
                     app:layout_constraintTop_toBottomOf="@+id/address_3_label" />
 
                 <TextView
                     android:id="@+id/role_label"
+                    style="@style/profileLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:text="User Role"
-                    style="@style/profileLabel"
                     app:layout_constraintStart_toStartOf="@+id/address_2"
-                    app:layout_constraintTop_toBottomOf="@+id/address_2" />
+                    app:layout_constraintTop_toBottomOf="@+id/address_3" />
 
                 <TextView
                     android:id="@+id/role"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Collector"
                     style="@style/profileValue"
                     app:layout_constraintStart_toStartOf="@+id/role_label"
                     app:layout_constraintTop_toBottomOf="@+id/role_label" />
