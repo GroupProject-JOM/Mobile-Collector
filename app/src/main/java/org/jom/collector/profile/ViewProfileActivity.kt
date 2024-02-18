@@ -39,6 +39,9 @@ class ViewProfileActivity : AppCompatActivity() {
     // get instance of methods class
     val methods = Methods()
 
+    // get bundle instance for send data for next intent
+    var extras = Bundle()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // get cookie operations
         val cookieManager = CookieManager.getInstance()
@@ -61,7 +64,7 @@ class ViewProfileActivity : AppCompatActivity() {
 
         // generate request
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8090/")
+            .baseUrl(methods.getBackendUrl())
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -94,16 +97,25 @@ class ViewProfileActivity : AppCompatActivity() {
                         val role: TextView = findViewById(R.id.role)
 
                         // assign values to text views
-                        first_name.text=user.getString("first_name")
-                        last_name.text=user.getString("last_name")
-                        email.text=user.getString("email")
-                        contact.text=user.getString("phone")
-                        nic.text=user.getString("nic")
-                        gender.text=user.getString("gender")
-                        address_1.text=user.getString("add_line_1")
-                        address_2.text=user.getString("add_line_2")
-                        address_3.text=user.getString("add_line_3")
-                        role.text=user.getString("role").capitalize()
+                        first_name.text = user.getString("first_name")
+                        last_name.text = user.getString("last_name")
+                        email.text = user.getString("email")
+                        contact.text = user.getString("phone")
+                        nic.text = user.getString("nic")
+                        dob.text = user.getString("dob")
+                        gender.text = user.getString("gender")
+                        address_1.text = user.getString("add_line_1")
+                        address_2.text = user.getString("add_line_2")
+                        address_3.text = user.getString("add_line_3")
+                        role.text = user.getString("role").capitalize()
+
+                        // add data to bundle to send to next intent
+                        extras.putString("first_name", user.getString("first_name"))
+                        extras.putString("last_name", user.getString("last_name"))
+                        extras.putString("phone", user.getString("phone"))
+                        extras.putString("add_line_1", user.getString("add_line_1"))
+                        extras.putString("add_line_2", user.getString("add_line_2"))
+                        extras.putString("add_line_3", user.getString("add_line_3"))
                     }
                 } else if (response.code() == 400) {
                     Log.d("TAG", "No user")
@@ -137,6 +149,7 @@ class ViewProfileActivity : AppCompatActivity() {
         edit = findViewById(R.id.edit)
         edit.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)
+            intent.putExtras(extras)
             startActivity(intent)
         }
 
