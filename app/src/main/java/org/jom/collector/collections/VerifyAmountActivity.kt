@@ -33,6 +33,8 @@ import okhttp3.ResponseBody
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 import org.jom.collector.AddCookiesInterceptor
+import org.jom.collector.AssignCollectionsActivity
+import org.jom.collector.CompletedCollectionsActivity
 import org.jom.collector.Methods
 import org.jom.collector.SigninApi
 import org.jom.collector.signInFormData
@@ -269,11 +271,17 @@ class VerifyAmountActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_completed -> {
+                    val intent = Intent(this, CompletedCollectionsActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_completed)
                     true
                 }
 
                 R.id.nav_assigned -> {
+                    val intent = Intent(this, AssignCollectionsActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_assigned)
                     true
                 }
