@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.webkit.CookieManager
 import android.widget.Button
 import android.widget.ImageView
@@ -13,7 +14,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import org.jom.collector.AddCookiesInterceptor
+import org.jom.collector.AssignCollectionsActivity
 import org.jom.collector.CollectionItem
+import org.jom.collector.CompletedCollectionsActivity
 import org.jom.collector.DashboardActivity
 import org.jom.collector.DashboardApi
 import org.jom.collector.Methods
@@ -38,6 +41,7 @@ class ViewCollectionActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var backButton: ImageView
     private lateinit var complete: Button
+    private lateinit var direction: Button
     private lateinit var jwt: String
 
     // get instance of methods class
@@ -98,6 +102,8 @@ class ViewCollectionActivity : AppCompatActivity() {
                         val date: TextView = findViewById(R.id.date)
                         val time: TextView = findViewById(R.id.time)
                         val count: TextView = findViewById(R.id.count)
+                        val fCount: TextView = findViewById(R.id.final_count)
+                        val fCountText: TextView = findViewById(R.id.final_count_text)
                         val payment: TextView = findViewById(R.id.payment)
 
                         // assign values to text views
@@ -115,13 +121,39 @@ class ViewCollectionActivity : AppCompatActivity() {
 
                         // add data to bundle to send to next intent
                         extras.putString("id", collection.getString("id"))
-                        extras.putString("name", "${collection.getString("name")} ${collection.getString("last_name")}")
+                        extras.putString(
+                            "name",
+                            "${collection.getString("name")} ${collection.getString("last_name")}"
+                        )
                         extras.putString("phone", collection.getString("phone"))
                         extras.putString("address", collection.getString("address"))
                         extras.putString("date", collection.getString("date"))
                         extras.putString("time", methods.convertTime(collection.getString("time")))
-                        extras.putString("amount", methods.formatAmount(collection.getString("amount").toDouble()))
-                        extras.putString("payment", collection.getString("payment_method").capitalize())
+                        extras.putString(
+                            "amount",
+                            methods.formatAmount(collection.getString("amount").toDouble())
+                        )
+                        extras.putString(
+                            "payment",
+                            collection.getString("payment_method").capitalize()
+                        )
+
+                        if (collection.getInt("status") != 3) {
+                            complete.visibility = View.GONE
+                            direction.visibility = View.GONE
+                            fCount.visibility = View.VISIBLE
+                            fCountText.visibility = View.VISIBLE
+
+                            val dateText: TextView = findViewById(R.id.date_text)
+                            val timeText: TextView = findViewById(R.id.time_text)
+
+                            dateText.text = "Collected Date"
+                            timeText.text = "Collected Time"
+
+                            date.text = collection.getString("collected_date")
+                            time.text = methods.convertTime(collection.getString("collected_time"))
+                            fCount.text = methods.formatAmount(collection.getString("final_amount").toDouble())
+                        }
                     }
                 } else if (response.code() == 202) {
                     val responseBody = response.body()
@@ -167,6 +199,8 @@ class ViewCollectionActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // get direction
+        direction = findViewById(R.id.direction)
 
         // bottom nav handler
         bottomNavigationView = findViewById(R.id.bottom_nav)
@@ -182,11 +216,17 @@ class ViewCollectionActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_completed -> {
+                    val intent = Intent(this, CompletedCollectionsActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_completed)
                     true
                 }
 
                 R.id.nav_assigned -> {
+                    val intent = Intent(this, AssignCollectionsActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_assigned)
                     true
                 }

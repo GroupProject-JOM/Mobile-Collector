@@ -119,7 +119,7 @@ class DashboardActivity : AppCompatActivity() {
 
                             val id = item.getInt("id")
                             val area = item.getString("area")
-                            val time = methods.convertTime(item.getString("time"))
+                            val time = item.getString("date")
                             val amount = item.getInt("amount")
                             val method = item.getString("payment_method")
 
@@ -132,6 +132,12 @@ class DashboardActivity : AppCompatActivity() {
                                     method
                                 )
                             )
+
+                            // Set up RecyclerView and its adapter after data is fetched
+                            runOnUiThread {
+                                upcomingCollectionsAdapter.notifyDataSetChanged()
+                                todayCollectionsAdapter.notifyDataSetChanged()
+                            }
                         }
                     }
                 } else if (response.code() == 202) {
@@ -154,7 +160,7 @@ class DashboardActivity : AppCompatActivity() {
 
                                 val id = item.getInt("id")
                                 val area = item.getString("area")
-                                val time = methods.convertTime(item.getString("time"))
+                                val time = item.getString("date")
                                 val amount = item.getInt("amount")
                                 val method = item.getString("payment_method")
 
@@ -167,6 +173,11 @@ class DashboardActivity : AppCompatActivity() {
                                         method
                                     )
                                 )
+
+                                // Set up RecyclerView and its adapter after data is fetched
+                                runOnUiThread {
+                                    upcomingCollectionsAdapter.notifyDataSetChanged()
+                                }
                             }
                         } else {
                             // no upcoming
@@ -190,6 +201,11 @@ class DashboardActivity : AppCompatActivity() {
                                         method
                                     )
                                 )
+
+                                // Set up RecyclerView and its adapter after data is fetched
+                                runOnUiThread {
+                                    todayCollectionsAdapter.notifyDataSetChanged()
+                                }
                             }
                         }
 
@@ -280,11 +296,17 @@ class DashboardActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_completed -> {
+                    val intent = Intent(this, CompletedCollectionsActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_completed)
                     true
                 }
 
                 R.id.nav_assigned -> {
+                    val intent = Intent(this, AssignCollectionsActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_assigned)
                     true
                 }

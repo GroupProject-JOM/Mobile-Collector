@@ -13,6 +13,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.jom.collector.AssignCollectionsActivity
+import org.jom.collector.CompletedCollectionsActivity
 import org.jom.collector.DashboardActivity
 import org.jom.collector.R
 import org.jom.collector.profile.ViewProfileActivity
@@ -149,11 +151,17 @@ class CompleteCollectionActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_completed -> {
+                    val intent = Intent(this, CompletedCollectionsActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_completed)
                     true
                 }
 
                 R.id.nav_assigned -> {
+                    val intent = Intent(this, AssignCollectionsActivity::class.java)
+                    startActivity(intent)
+
                     item.setIcon(R.drawable.icon_assigned)
                     true
                 }
