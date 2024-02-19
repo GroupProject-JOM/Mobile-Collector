@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".collections.CompleteCollectionActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:srcCompat="@drawable/icon_back" />
+
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="9dp"
+            android:text="Complete Collection"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/topBarShadow"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/bottom_shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <TextView
+        android:id="@+id/collection_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:text="Collection Details"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBarShadow" />
+
+    <TextView
+        android:id="@+id/id_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Collection ID"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/collection_details"
+        app:layout_constraintTop_toBottomOf="@+id/collection_details" />
+
+    <TextView
+        android:id="@+id/collection_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/id_text"
+        app:layout_constraintTop_toTopOf="@+id/id_text" />
+
+    <TextView
+        android:id="@+id/supplier_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Supplier Name"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/id_text"
+        app:layout_constraintTop_toBottomOf="@+id/collection_id" />
+
+    <TextView
+        android:id="@+id/supplier_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/collection_id"
+        app:layout_constraintTop_toTopOf="@+id/supplier_name_text" />
+
+    <TextView
+        android:id="@+id/supplier_phone_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Supplier Phone"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/supplier_name_text"
+        app:layout_constraintTop_toBottomOf="@+id/supplier_name" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/supplier_name"
+        app:layout_constraintTop_toTopOf="@+id/supplier_phone_text" />
+
+    <TextView
+        android:id="@+id/address_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Estate Address"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/supplier_phone_text"
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/phone"
+        app:layout_constraintTop_toTopOf="@+id/address_text" />
+
+    <TextView
+        android:id="@+id/date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Pickup Date"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/address_text"
+        app:layout_constraintTop_toBottomOf="@+id/address" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/address"
+        app:layout_constraintTop_toTopOf="@+id/date_text" />
+
+    <TextView
+        android:id="@+id/actual_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Actual Coconut Amount"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/payment_text"
+        app:layout_constraintTop_toBottomOf="@+id/payment_text" />
+
+    <EditText
+        android:id="@+id/actual"
+        android:layout_width="215dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/actual_text"
+        app:layout_constraintTop_toBottomOf="@+id/actual_text" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="291dp"
+        android:layout_height="wrap_content"
+        android:text="Upon Submission, Supplier will verify the coconut amount using his application. "
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/actualError"
+        app:layout_constraintTop_toBottomOf="@+id/actualError" />
+
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Pickup Time"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/date_text"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/date"
+        app:layout_constraintTop_toTopOf="@+id/time_text" />
+
+    <TextView
+        android:id="@+id/amount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Coconut Count"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/time_text"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/time"
+        app:layout_constraintTop_toTopOf="@+id/amount_text" />
+
+    <TextView
+        android:id="@+id/payment_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Payment Method"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/amount_text"
+        app:layout_constraintTop_toBottomOf="@+id/amount" />
+
+    <TextView
+        android:id="@+id/payment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/amount"
+        app:layout_constraintTop_toTopOf="@+id/payment_text" />
+
+    <Button
+        android:id="@+id/complete"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="70dp"
+        android:text="Complete Collection"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/bottomNavContainer"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@id/bottom_nav"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        style="@style/BottomNavHeight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/nav_menu" />
+
+    <TextView
+        android:id="@+id/actualError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textColor="#FA0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/actual"
+        app:layout_constraintTop_toBottomOf="@+id/actual" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
