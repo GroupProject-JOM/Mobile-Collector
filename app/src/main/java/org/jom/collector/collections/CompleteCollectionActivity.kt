@@ -118,9 +118,9 @@ class CompleteCollectionActivity : AppCompatActivity() {
                 SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Are you sure?")
                     .setContentText("You won't be able to revert this!")
-                    .setConfirmText("Complete!")
+                    .setConfirmText("✔")
                     .showCancelButton(true)
-                    .setCancelText("Cancel")
+                    .setCancelText("✖")
                     .setConfirmClickListener { sDialog ->
                         sDialog.setTitleText("Completed!")
                             .setContentText("Collection marked as complete and notify to supplier to verify amount.")

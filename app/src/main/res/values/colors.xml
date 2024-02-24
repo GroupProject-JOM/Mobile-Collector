@@ -70,5 +70,6 @@
     <color name="darkStockLv3">#527d2e</color>
     <color name="darkStockLv4">#bb3737</color>
 
+    <color name="loadingStatus">#1B1817</color>
 
 </resources>
