@@ -25,7 +25,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 
 interface AssignApi {
-    @POST("JOM_war_exploded/collector")
+    @POST("api/collector")
     fun getData(): Call<ResponseBody>
 }
 

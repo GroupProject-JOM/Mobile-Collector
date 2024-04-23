@@ -13,7 +13,7 @@ import java.util.Locale
 
 class Methods {
 //    private val backendUrl = "http://10.0.2.2:8090/"
-    private val backendUrl = "http://10.0.2.2:8090/"
+    private val backendUrl = "https://jom-dev.duckdns.org/"
 
     fun getBackendUrl(): String {
         return this.backendUrl
@@ -21,7 +21,7 @@ class Methods {
 
     fun getAllCookies(cookieManager: CookieManager): List<Pair<String, String>> {
         // Get all cookies
-        val allCookies = cookieManager.getCookie("10.0.2.2")
+        val allCookies = cookieManager.getCookie("jom-dev.duckdns.org")
 
         // Initialize a list to store the parsed cookies
         val parsedCookies = mutableListOf<Pair<String, String>>()

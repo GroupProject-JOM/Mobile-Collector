@@ -20,7 +20,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.POST
 
 interface CompletedApi {
-    @DELETE("JOM_war_exploded/collector")
+    @DELETE("api/collector")
     fun getData(): Call<ResponseBody>
 }
 

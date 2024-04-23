@@ -58,17 +58,17 @@ data class VerifyAmountFormData(
 )
 
 interface CompleteCollectionApi {
-    @PUT("JOM_war_exploded/pickup-collection")
+    @PUT("api/pickup-collection")
     fun completeCollection(@Body formData: CompleteCollectionFormData): Call<ResponseBody>
 }
 
 interface OptionalVerificationApi {
-    @POST("JOM_war_exploded/optional-verification")
+    @POST("api/optional-verification")
     fun optionalVerification(@Body formData: CompleteCollectionFormData): Call<ResponseBody>
 }
 
 interface VerifyAmountApi {
-    @POST("JOM_war_exploded/verify-amount")
+    @POST("api/verify-amount")
     fun verifyAmountFormData(@Body formData: VerifyAmountFormData): Call<ResponseBody>
 }
 
@@ -147,7 +147,7 @@ class VerifyAmountActivity : AppCompatActivity() {
         runBlocking {
             val socket = OkHttpClient().newWebSocket(
                 Request.Builder()
-                    .url("ws://10.0.2.2:8090/JOM_war_exploded/verify-amount/${senderId}")
+                    .url("wss://jom-dev.duckdns.org/api/verify-amount/${senderId}")
                     .build(),
                 object : WebSocketListener() {
                     private val isConnected = AtomicBoolean(false)

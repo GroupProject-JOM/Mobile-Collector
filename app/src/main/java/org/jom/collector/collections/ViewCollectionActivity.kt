@@ -41,7 +41,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 interface CollectionApi {
-    @GET("JOM_war_exploded/pickup-collection")
+    @GET("api/pickup-collection")
     fun getData(
         @Query("id") id: Int,
     ): Call<ResponseBody>

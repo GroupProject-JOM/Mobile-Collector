@@ -30,7 +30,7 @@ import retrofit2.http.GET
 import java.time.LocalTime
 
 interface DashboardApi {
-    @GET("JOM_war_exploded/collector")
+    @GET("api/collector")
     fun getData(): Call<ResponseBody>
 }
 
