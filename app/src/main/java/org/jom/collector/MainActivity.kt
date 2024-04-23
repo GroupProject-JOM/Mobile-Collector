@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
             // nav and status bar colors
             window.navigationBarColor = ContextCompat.getColor(this, R.color.lightBodyColor)
-            window.statusBarColor = ContextCompat.getColor(this, R.color.darkBoxShadow)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.loadingStatus)
 
             // auto redirect login page after 3s
             Handler(Looper.getMainLooper()).postDelayed({

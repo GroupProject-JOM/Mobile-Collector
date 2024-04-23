@@ -12,4 +12,23 @@
         <item name="android:fontFamily">@font/inter_semibold</item>
         <item name="android:textColor">@color/lightProfileValue</item>
     </style>
+
+    <style name="pageTitle">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">9dp</item>
+        <item name="android:layout_marginBottom">9dp</item>
+        <item name="android:textColor">@color/lightInputBorderFocus</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="backButton">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">13dp</item>
+    </style>
 </resources>

@@ -1,6 +1,13 @@
 package org.jom.collector.collections
 
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +16,7 @@ import android.webkit.CookieManager
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import okhttp3.OkHttpClient
@@ -28,6 +36,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 interface CollectionApi {
     @GET("JOM_war_exploded/pickup-collection")
@@ -43,6 +54,12 @@ class ViewCollectionActivity : AppCompatActivity() {
     private lateinit var complete: Button
     private lateinit var direction: Button
     private lateinit var jwt: String
+    private lateinit var location: String
+
+    private lateinit var mapView: MapView
+    private lateinit var locationManager: LocationManager
+
+    private val REQUEST_LOCATION_CODE = 100
 
     // get instance of methods class
     val methods = Methods()
@@ -117,7 +134,7 @@ class ViewCollectionActivity : AppCompatActivity() {
                         count.text = methods.formatAmount(collection.getString("amount").toDouble())
                         payment.text = collection.getString("payment_method").capitalize()
 
-                        var location = collection.getString("location")
+                        location = collection.getString("location")
 
                         // add data to bundle to send to next intent
                         extras.putString("id", collection.getString("id"))
@@ -152,7 +169,9 @@ class ViewCollectionActivity : AppCompatActivity() {
 
                             date.text = collection.getString("collected_date")
                             time.text = methods.convertTime(collection.getString("collected_time"))
-                            fCount.text = methods.formatAmount(collection.getString("final_amount").toDouble())
+                            fCount.text = methods.formatAmount(
+                                collection.getString("final_amount").toDouble()
+                            )
                         }
                     }
                 } else if (response.code() == 202) {
@@ -183,6 +202,21 @@ class ViewCollectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_collection)
 
+
+        mapView = findViewById(R.id.mapView)
+        mapView.onCreate(savedInstanceState) // Important for lifecycle management
+
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        // Check and request location permission (important for Android 6.0+)
+        if (checkLocationPermission()) {
+            // Location permission granted, configure map to show user location
+            configureMapView()
+        } else {
+            requestLocationPermission()
+        }
+
+
         //back
         backButton = findViewById(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
@@ -201,6 +235,46 @@ class ViewCollectionActivity : AppCompatActivity() {
 
         // get direction
         direction = findViewById(R.id.direction)
+        direction.setOnClickListener {
+            // Split the location string into latitude and longitude
+            val locationSplit = location.split(" ")
+            val latitude = locationSplit[0].toDouble()
+            val longitude = locationSplit[1].toDouble()
+
+//            val uri = "http://maps.google.com/maps?saddr=Current+Location&daddr=${latitude},${longitude}"
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+//            intent.setPackage("com.google.android.apps.maps")
+//            startActivity(intent)
+
+            if (checkLocationPermission()) {
+                // Request location updates
+                locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, object : LocationListener {
+                    override fun onLocationChanged(location: Location) {
+                        val currentLatitude = location.latitude
+                        val currentLongitude = location.longitude
+                        val uri = "http://maps.google.com/maps?saddr=$currentLatitude,$currentLongitude&daddr=${latitude},${longitude}"
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+                        intent.setPackage("com.google.android.apps.maps")
+                        startActivity(intent)
+                    }
+
+                    override fun onProviderDisabled(provider: String) {
+                        // Handle provider disabled
+                    }
+
+                    override fun onProviderEnabled(provider: String) {
+                        // Handle provider enabled
+                    }
+
+                    override fun onStatusChanged(provider: String, status: Int, extras: Bundle?) {
+                        // Handle location status changes
+                    }
+                }, null)
+            } else {
+                // Request location permission if not granted
+                requestLocationPermission()
+            }
+        }
 
         // bottom nav handler
         bottomNavigationView = findViewById(R.id.bottom_nav)
@@ -243,4 +317,72 @@ class ViewCollectionActivity : AppCompatActivity() {
             };
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    private fun checkLocationPermission(): Boolean {
+        // Check for permissions (adjust based on your target SDK version)
+        return ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestLocationPermission() {
+        // Request permissions (adjust based on your target SDK version)
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            REQUEST_LOCATION_CODE
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_LOCATION_CODE) {
+            configureMapView()
+        }
+    }
+
+    private fun configureMapView() {
+        mapView.getMapAsync { map ->
+            // Split the location string into latitude and longitude
+            val locationSplit = location.split(" ")
+            val latitude = locationSplit[0].toDouble()
+            val longitude = locationSplit[1].toDouble()
+
+            // Create LatLng object for the location
+            val collectionLocation = LatLng(latitude, longitude)
+
+            // Move camera to the collection location
+            map.moveCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    collectionLocation,
+                    15f
+                )
+            ) // Adjust zoom level as needed
+
+            // Add a marker at the collection location
+            map.addMarker(MarkerOptions().position(collectionLocation).title("Collection Location"))
+        }
+    }
+
+
 }

@@ -202,8 +202,6 @@
         android:id="@+id/recycleViewUpcoming"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:visibility="gone"
