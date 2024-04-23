@@ -1,6 +1,7 @@
 package org.jom.collector.profile
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import org.jom.collector.AddCookiesInterceptor
 import org.jom.collector.AssignCollectionsActivity
 import org.jom.collector.CompletedCollectionsActivity
 import org.jom.collector.DashboardActivity
+import org.jom.collector.MainActivity
 import org.jom.collector.Methods
 import org.jom.collector.R
 import org.json.JSONObject
@@ -33,7 +35,9 @@ interface ProfileApi {
 
 class ViewProfileActivity : AppCompatActivity() {
 
+    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var logoutButton: Button
     private lateinit var backButton: ImageView
     private lateinit var edit: Button
     private lateinit var jwt: String
@@ -153,6 +157,29 @@ class ViewProfileActivity : AppCompatActivity() {
             val intent = Intent(this, EditProfileActivity::class.java)
             intent.putExtras(extras)
             startActivity(intent)
+        }
+
+        //logout
+        logoutButton = findViewById(R.id.logout)
+        logoutButton.setOnClickListener {
+            // Clearing SharedPreferences
+            sharedPreferences.edit().clear().apply()
+
+            val cookieManager = CookieManager.getInstance()
+            val cookieName = "jwt"
+            val domain = "jom-dev.duckdns.org"
+            val path = "/"
+
+            // Expire the cookie by setting its expiry date in the past
+            val expiredCookie = "$cookieName=; domain=$domain; path=$path; Max-Age=0"
+
+            // Set the expired cookie to replace the existing one
+            cookieManager.setCookie(domain, expiredCookie)
+
+            // redirect to main activity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         // bottom nav handler
