@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface ProfileApi {
-    @GET("api/profile")
+    @GET("JOM_war_exploded/profile")
     fun getData(): Call<ResponseBody>
 }
 
@@ -167,7 +167,7 @@ class ViewProfileActivity : AppCompatActivity() {
 
             val cookieManager = CookieManager.getInstance()
             val cookieName = "jwt"
-            val domain = "jom-dev.duckdns.org"
+            val domain = "10.0.2.2"
             val path = "/"
 
             // Expire the cookie by setting its expiry date in the past
