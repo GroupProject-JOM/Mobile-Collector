@@ -90,14 +90,14 @@ class DashboardActivity : AppCompatActivity() {
                     responseBody?.let {
                         val jsonString = it.string() // Convert response body to JSON string
                         val jsonObject = JSONObject(jsonString)
-                        val count = jsonObject.optString("count")
+                        val size = jsonObject.optString("size","0")
                         val rate = jsonObject.getJSONObject("rate")
 
                         val todayRate: TextView = findViewById(R.id.widget01_value)
                         todayRate.text = rate.getString("price") + " LKR"
 
                         val Remaining: TextView = findViewById(R.id.widget02_value)
-                        Remaining.text = count
+                        Remaining.text = size
 
                         val todayList = jsonObject.getJSONArray("today")
                         val upcomingList = jsonObject.getJSONArray("upcoming")

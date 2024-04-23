@@ -12,15 +12,11 @@ import java.util.Base64
 import java.util.Locale
 
 class Methods {
+//    private val backendUrl = "http://10.0.2.2:8090/"
     private val backendUrl = "http://10.0.2.2:8090/"
-    private val artifact = "JOM_war_exploded"
 
     fun getBackendUrl(): String {
         return this.backendUrl
-    }
-
-    fun getArtifact(): String {
-        return this.artifact
     }
 
     fun getAllCookies(cookieManager: CookieManager): List<Pair<String, String>> {
