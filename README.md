@@ -2,6 +2,8 @@
 
 Presenting a mobile application to cope with the responsibilities of company collectors to manage their daily coconut collection process. This application empowers users with features such as navigation, amount editing, optional verification, date filtering, and real-time validation.
 
+<a href="https://github.com/GroupProject-JOM/Mobile-Collector/releases/download/v1.1.0/JOM.apk" target="_blank"> <img src="https://github.com/GroupProject-JOM/Frontend-web-/blob/main/common/img/collector_qr.png" height="200px"></a>
+
 ## Features
 
 - **Navigation (powered by Google Maps):** Obtain precise directions to estates directly from the map and optimize travel routes and reduce navigation uncertainties.
